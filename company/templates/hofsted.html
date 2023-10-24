@@ -2,9 +2,168 @@
  {% block content %}
   {% load static %}
   <style>
-    
-</style>
-<div class="container">
-    
+    .ribbon{
+        font-size:20px;
+        position:relative;
+        display:inline-block;
+        text-align:center;
+      }
+      .text{
+        display:inline-block;
+        padding:0.5em 1em;
+        min-width:8em;
+        line-height:0.2em;
+        background: #fa8321;
+        position:relative;
+      }
+      .ribbon:after,.ribbon:before,
+      .text:before,.text:after,
+      .bold:before{
+        content:'';
+        position:absolute;
+        border-style:solid;
+      }
+      .ribbon:before{
+        top:0.3em; left:0.2em;
+        width:100%; height:100%;
+        border:none;
+        background:#EBECED;
+        z-index:-2;
+      }
+      .text:before{
+        bottom:100%; left:0;
+        border-width: .5em .7em 0 0;
+        border-color: transparent #fa8321 transparent transparent;
+      }
+      .text:after{
+        top:100%; right:0;
+        border-width: .5em 2em 0 0;
+        border-color: #fa8321 transparent transparent transparent;
+      }
+      .ribbon:after, .bold:before{
+        top:0.5em;right:-2em;
+        border-width: 0.6em 1em 0.6em 3em;
+        border-color: #fa8321 transparent #fa8321 #fa8321;
+        z-index:-1;
+      }
+      .bold:before{
+        border-color: #EBECED transparent #EBECED #EBECED;
+        top:0.7em;
+        right:-2.3em;
+      }
+      
+  </style>
+<div style="display: grid; grid-template-columns: 1fr 1fr; margin-top:6%; margin-left: 8%;">
+    <div style="margin-left: 5%;">
+        <table style="text-align:center;">
+            <tbody>
+           <tr>
+            <td>
+            <img src="{% static 'usa_flag.png' %}" style="height: 50%; width: 40%; 
+            margin-bottom: -2%;
+            margin-left: 40%;"/>
+            </td>
+           <tr>
+            <td>
+        <p class="ribbon">
+            <span class="text"><strong class="bold">USA</strong></span>
+          </p>
+            </td>
+           </tr>
+           <tr>
+            <td>
+                <div class="card" style="
+                z-index: -3;
+                margin-top: -5%;
+                margin-left: 25%;
+                width: 18rem;">
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-12 rounded-top" style="background-color: #f1aeb5; height: 50px;">
+                        <!-- Content for the first div -->
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12" style="background-color: #9ec5fe; height: 50px;">
+                        <!-- Content for the second div -->
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12" style="background-color: #f1aeb5; height: 50px;">
+                        <!-- Content for the third div -->
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12" style="background-color: #9ec5fe; height: 50px;">
+                        <!-- Content for the fourth div -->
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 rounded-bottom" style="background-color: #f1aeb5; height: 50px;">
+                        <!-- Content for the fifth div -->
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+            </td>
+           </tr>
+           
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top:15%">
+        <table style="text-align: left;">
+            <tbody>
+           <tr>
+            <td>
+            <img src="{% static 'korea_flag.png' %}" style="height: 50%; width: 40%; 
+            margin-bottom: -4%;
+            margin-left: 6%; transform: rotate(10deg);"/>
+            </td>
+           <tr>
+            <td>
+        <p class="ribbon">
+            <span class="text"><strong class="bold">South Korea</strong></span>
+          </p>
+            </td>
+           </tr>
+           <tr>
+            <td>
+                <div class="card" style="z-index: -3; margin-top: -4%; margin-left: -8%; width: 18rem;">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-12 rounded-top" style="background-color: #f1aeb5; height: 50px;">
+                          <!-- Content for the first div -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12" style="background-color: #9ec5fe; height: 50px;">
+                          <!-- Content for the second div -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12" style="background-color: #f1aeb5; height: 50px;">
+                          <!-- Content for the third div -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12" style="background-color: #9ec5fe; height: 50px;">
+                          <!-- Content for the fourth div -->
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 rounded-bottom" style="background-color: #f1aeb5; height: 50px;">
+                          <!-- Content for the fifth div -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+            </td>
+           </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
