@@ -1,31 +1,599 @@
-{% extends "base.html" %}
-
-{% block content %}
-{% load static %}
+{% extends "base.html" %} {% block content %} {% load static %}
 
 <style>
+  
+  h2,
+  h5,
+  p,
+  strong {
+    color: black !important;
+  }
 
-  .centertext{
+  .centertext {
     position: fixed;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            text-shadow: 2px 2px 0px #fa8321;
-}
-.imagemain{
-  margin-top:5%;
-  width: 100%;
-  height: 90vh;
-   
-}
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-shadow: 2px 2px 0px #fa8321;
+  }
+  .imagemain {
+    margin-top: 5%;
+    width: 100%;
+    height: 90vh;
+  }
+
+  .circle {
+    padding: 13px 20px;
+    border-radius: 50%;
+    background-color: #fa8321;
+    color: #fff;
+    max-height: 50px;
+    z-index: 2;
+  }
+
+  .how-it-works.row .col-2 {
+    align-self: stretch;
+  }
+  .how-it-works.row .col-2::after {
+    content: "";
+    position: absolute;
+    border-left: 3px solid #fa8321;
+    z-index: 1;
+  }
+  .how-it-works.row .col-2.bottom::after {
+    height: 50%;
+    left: 50%;
+    top: 50%;
+  }
+  .how-it-works.row .col-2.full::after {
+    height: 100%;
+    left: calc(50% - 3px);
+  }
+  .how-it-works.row .col-2.top::after {
+    height: 50%;
+    left: 50%;
+    top: 0;
+  }
+
+  .timeline div {
+    padding: 0;
+    height: 40px;
+  }
+  .timeline hr {
+    border-top: 3px solid #fa8321;
+    margin: 0;
+    top: 17px;
+    position: relative;
+  }
+  .timeline .col-2 {
+    display: flex;
+    overflow: hidden;
+  }
+  .timeline .corner {
+    border: 3px solid #fa8321;
+    width: 100%;
+    position: relative;
+    border-radius: 15px;
+  }
+  .timeline .top-right {
+    left: 50%;
+    top: -50%;
+  }
+  .timeline .left-bottom {
+    left: -50%;
+    top: calc(50% - 3px);
+  }
+  .timeline .top-left {
+    left: -50%;
+    top: -50%;
+  }
+  .timeline .right-bottom {
+    left: 50%;
+    top: calc(50% - 3px);
+  }
 </style>
-  <div class="maintext">
-    <img class="imagemain" src="{% static 'main.png' %}"/>
+<div class="maintext">
+  <img class="imagemain" src="{% static 'main.png' %}" />
+</div>
+
+<div style="background-color: #e6e6e6">
+  <br />
+  <p></p>
+  <p
+    style="
+      color: black !important;
+      padding: 10px;
+      width: 50%;
+      margin: 10px auto;
+      text-align: center;
+      font-size: large;
+    "
+  >
+    Across the world, a staggering amount of people are eating their food with
+    single-use plastic utensils but why do we use something just for few minutes
+    if it's gonna take hundreds of years to decompose? It's a moment on the lips
+    but a lifetime in a landfill. That's why, IncrEDIBLE Eats was founded to
+    create the world's first mass-manufacturable and entirely edible cutlery,
+    offering an incredible solution.
+  </p>
+  <p></p>
+  <br />
+</div>
+
+<div style="background-color: #f0ffff">
+  <br />
+  <div class="container">
+    <!--first section-->
+    <div class="row align-items-center how-it-works d-flex">
+      <div
+        class="col-2 text-center bottom d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">1</div>
+      </div>
+      <div class="col-6">
+        <h5><strong>2007</strong></h5>
+        <p>
+          Dinesh Tadepalli, an engineer originally from Guntur, Andhra Pradesh,
+          South India, moves to the U.S. to pursue his Master's degree after
+          completing his undergraduate studies in Electrical Engineering in
+          Chennai, Tamil Nadu.
+        </p>
+      </div>
+    </div>
+    <!--path between 1-2-->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner top-right"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner left-bottom"></div>
+      </div>
+    </div>
+    <!--second section-->
+    <div class="row align-items-center justify-content-end how-it-works d-flex">
+      <div class="col-6 text-right">
+        <h5><strong>2018</strong></h5>
+        <p>
+          While having ice cream with his daughter at a dessert parlor,
+          Tadepalli is shocked to see a bin filled with a massive amount of
+          plastic spoons. This incident triggers his commitment to reducing
+          plastic pollution.
+        </p>
+      </div>
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">2</div>
+      </div>
+    </div>
+    <!--path between 2-3-->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner right-bottom" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner top-left"></div>
+      </div>
+    </div>
+    <!--third section-->
+    <div class="row align-items-center how-it-works top d-flex">
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">3</div>
+      </div>
+      <div class="col-6">
+        <h5><strong>2019</strong></h5>
+        <p>
+          Tadepalli launches his mission to find a sustainable alternative to
+          single-use plastic cutlery. He discovers a Hyderabad-based startup
+          selling edible spoons but decides to set up his own production
+          machinery in the U.S.
+        </p>
+      </div>
+    </div>
+    <!--path between 3 and 4-->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner top-right" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner left-bottom"></div>
+      </div>
+    </div>
+    <!--fourth section-->
+    <div class="row align-items-center justify-content-end how-it-works d-flex">
+      <div class="col-6 text-right">
+        <h5><strong>February 2019</strong></h5>
+        <p>
+          The first edible spoons made from non-GMO corn, wheat, chickpeas, and
+          brown rice are introduced to the world under the company's original
+          name, "Planeteer.
+        </p>
+      </div>
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">4</div>
+      </div>
+    </div>
+    <!--path between 4-5 -->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner right-bottom" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner top-left"></div>
+      </div>
+    </div>
+    <!--fifth section-->
+    <div class="row align-items-center how-it-works top d-flex">
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">5</div>
+      </div>
+      <div class="col-6">
+        <h5><strong>2019 Later</strong></h5>
+        <p>
+          In 2019, the company initially targeted B2B food service as the
+          primary market for their edible cutlery due to the high use of plastic
+          in this sector. However, the COVID-19 pandemic led the company to
+          explore B2C and direct-to-consumer sales as well.
+        </p>
+      </div>
+    </div>
+    <!--path between 5 and 6-->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner top-right" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner left-bottom"></div>
+      </div>
+    </div>
+    <!--sixth section-->
+    <div class="row align-items-center justify-content-end how-it-works d-flex">
+      <div class="col-6 text-right">
+        <h5><strong>2021</strong></h5>
+        <p>
+          IncrEDIBLE Eats expands its product line beyond spoons, with the
+          introduction of edible sporks and straws.
+        </p>
+      </div>
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">6</div>
+      </div>
+    </div>
+    <!--path between 6 and 7 -->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner right-bottom" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner top-left"></div>
+      </div>
+    </div>
+    <!--seventh section-->
+    <div class="row align-items-center how-it-works top d-flex">
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">7</div>
+      </div>
+      <div class="col-6">
+        <h5><strong>Later 2021</strong></h5>
+        <p>
+          Tadepalli and IncrEDIBLE Eats make a successful appearance on Shark
+          Tank's Season 13, impressing the sharks with his vision of replacing
+          plastic cutlery to save the planet. He secures an investment deal with
+          Lori Greiner.
+        </p>
+      </div>
+    </div>
+
+    <!--path between 7 and 8-->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner top-right" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner left-bottom"></div>
+      </div>
+    </div>
+    <!--eighth section-->
+    <div class="row align-items-center justify-content-end how-it-works d-flex">
+      <div class="col-6 text-right">
+        <h5><strong>Post Shark Tank Success</strong></h5>
+        <p>
+          After the Shark Tank episode airs, IncrEDIBLE Eats receives pre-orders
+          of $50,000 in just two days, boosting the company's success.
+        </p>
+      </div>
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">8</div>
+      </div>
+    </div>
+    <!--path between 8 and 9 -->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner right-bottom" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner top-left"></div>
+      </div>
+    </div>
+    <!--ninth section-->
+    <div class="row align-items-center how-it-works top d-flex">
+      <div
+        class="col-2 text-center full d-inline-flex justify-content-center align-items-center"
+      >
+        <div class="circle font-weight-bold">9</div>
+      </div>
+      <div class="col-6">
+        <h5><strong>2022</strong></h5>
+        <p>
+          The company partners with Dippin' Dots, an iconic beaded ice cream
+          company, to offer its edible cutlery as a sustainable alternative.
+        </p>
+      </div>
+    </div>
+    <!--path between 9 and 10-->
+    <div class="row timeline">
+      <div class="col-2">
+        <div class="corner top-right" style="left: 48.5%"></div>
+      </div>
+      <div class="col-8">
+        <hr />
+      </div>
+      <div class="col-2">
+        <div class="corner left-bottom"></div>
+      </div>
+    </div>
+    <!--tenth section-->
+    <div class="row align-items-center justify-content-end how-it-works d-flex">
+      <div class="col-6 text-right">
+        <h5><strong>2023</strong></h5>
+        <p>
+          The company is valued at around $2 million, and they've opened a 2023
+          SAFE note offering to expand their pool of investors. They have sold
+          over 6 million spoons to date and are expanding their product
+          offerings, including different shapes and flavors.
+        </p>
+      </div>
+      <div
+        class="col-2 text-center top d-inline-flex justify-content-center align-items-center"
+        style="left: -0.25%"
+      >
+        <div class="circle font-weight-bold">10</div>
+      </div>
+    </div>
   </div>
+  <br /><br />
+</div>
+
+<div style="display: inline-grid; grid-template-columns: 1fr 1fr">
+  {% comment %}
   <div>
-    <p style="color:black !important; margin:10px; padding: 10px; font-family:GT Flexa Medium !important">Across the world, a staggering amount of people are eating their food with single-use plastic utensils 
-      but why do we use something just for few minutes if it's gonna take hundreds of years to decompose. 
-      That's the moment on the lips but a lifetime in a landfill</p>
+    <img src="{% static 'sustain.jpg' %}" style="width: 100%; height: 80%" />
   </div>
+  {% endcomment %}
+  <div
+    style="
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    "
+  >
+    <span style="position: relative; z-index: 2; margin: 20%">
+      Sustainability remains a central focus for IncrEDIBLE Eats. The company
+      has been able to offset its 200% of carbon footprint and continues to
+      offer eco-friendly and recyclable packaging.
+    </span>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+      <img
+        src="{% static 'sustain.jpg' %}"
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(70%);
+        "
+      />
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.3);
+        "
+      ></div>
+    </div>
+  </div>
+
+  {% comment %}
+  <div>
+    <img src="{% static 'growth.jpg' %}" style="width: 100%; height: 80%" />
+  </div>
+  {% endcomment %}
+  <div
+    style="
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    "
+  >
+    <span style="position: relative; z-index: 2; margin: 20%">
+      The company's commitment to reducing plastic waste and its innovative
+      product line, including edible spoons, sporks, and straws, positions it
+      for continued success and expansion.
+    </span>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+      <img
+        src="{% static 'growth.jpg' %}"
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(70%);
+        "
+      />
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.3);
+        "
+      ></div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <img src="{% static 'together.png' %}" style="width: 100%; height: 80%" />
+</div>
+
+<div style="display: inline-grid; grid-template-columns: 1fr 1fr">
+  <div
+    style="
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    "
+  >
+    <span style="position: relative; z-index: 2; margin: 20%">
+      <b>Dinesh Tadepalli</b>
+      <h6>CHIEF DECISION MAKER / CO-FOUNDER</h6>
+      <p style="font-size: small; color: white !important">
+        Nature loving entrepreneur, angel investor and a hardware engineer. Love
+        adventure, hiking and making this world a better place.
+      </p></span
+    >
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+      <img
+        src="{% static 'founder1.webp' %}"
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(70%);
+        "
+      />
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.3);
+        "
+      ></div>
+    </div>
+  </div>
+
+  {% comment %}
+  <div>
+    <img src="{% static 'growth.jpg' %}" style="width: 100%; height: 80%" />
+  </div>
+  {% endcomment %}
+  <div
+    style="
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    "
+  >
+    <span style="position: relative; z-index: 2; margin: 20%">
+      <b>Kruvil Patel</b>
+      <h6>CHIEF SPOON MAKER</h6>
+      <p style="font-size: small; color: white !important">
+        Risk taker, fun loving, adventurous, Mechanical engineer and a fine
+        artist who wants to make world plastic free.
+      </p></span
+    >
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%">
+      <img
+        src="{% static 'founder2.webp' %}"
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(70%);
+        "
+      />
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.3);
+        "
+      ></div>
+    </div>
+  </div>
+</div>
+
+
+
 {% endblock %}

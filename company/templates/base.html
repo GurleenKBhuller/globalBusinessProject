@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -23,8 +23,14 @@
     ></script>
 
     <title>Incredible Eats</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'title_logo.png' %}" >
-
+    <link rel="icon" type="image/x-icon" href="{% static 'title_logo.png' %}" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
       ul li {
         border-bottom: 1px solid white;
@@ -32,44 +38,118 @@
         margin-bottom: 10px;
       }
 
-      *{
-        color:white !important;
+      * {
+        color: white !important;
+        font-family:GT Flexa Medium !important;
+      }
+      #bottomul .li{
+        border-bottom: none !important;
+        margin: 0;
+         padding: 0; 
       }
     </style>
   </head>
   <body>
-    
     <!-- NAVBAR -->
-    <nav class="navbar bg-body-tertiary fixed-top navbar-dark bg-dark" style="background-color: #fa8321 !important;">
+    <nav
+      class="navbar bg-body-tertiary fixed-top navbar-dark bg-dark"
+      style="background-color: #fa8321 !important; height: 12%;"
+    >
       <div class="container-fluid">
-        <img src="{% static 'incredible_logo.webp' %}" style=" height: auto; width:15%"/>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon">   
-          </span>
+
+        <a href="{% url 'index' %}">
+          <img
+          src="{% static 'incredible_logo.webp' %}"
+          style="height: 100%;
+          width: 25%;"
+        />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"> </span>
         </button>
-        <div class="offcanvas offcanvas-end" style="background-color: #fa8321 !important;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div
+          class="offcanvas offcanvas-end"
+          style="background-color: #fa8321 !important"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h4 class="offcanvas-title" id="offcanvasNavbarLabel"></h4>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
           </div>
-        
+
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'pestle_view' %}nav-link-active{% endif %}" href="{% url 'pestle_view' %}">PESTLE Analysis</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'hofsted_view' %}nav-link-active{% endif %}" href="{% url 'hofsted_view' %}">Hofsted</a>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </nav>
-   <div class="body">
-    <!-- style="margin-top:7%; margin-left:2%;"-->
-    {% block content %}
-    {% endblock %}
-   </div>
+    <div class="body">
+      <!-- style="margin-top:7%; margin-left:2%;"-->
+      {% block content %} {% endblock %}
+
+      <div
+  style="
+    background-color: #fa8321;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  "
+>
+  <div style="float: left; width: 78%; margin-left: 5%;">
+    <br /><br />
+    <b
+      >Incredible Eats is on a mission to remove plastic waste from the
+      ocean.</b
+    >
+    <br /><br />
+    <span
+      >Now bringing the Incredible Eats excellence and uniqueness to the vibrant South Korean market.
+      With a commitment to sustainability and a focus on providing
+       eco-friendly dining solutions, the aim is to make a positive impact 
+       on both South Korea's culinary landscape and the environment.     
+      
+      </span
+    >
+  </div>
+<div>
+  <img src="{% static 'map_image.png' %}" style="
+  width: 120%;
+  margin: 5px;
+  opacity: 65%;"/>
+</div>
+  <div style="display: flex;
+  justify-content: flex-end;
+  margin: 10%;">
+    <ul id="bottomul" style=" list-style-type: none">
+      <li class="li"><a href="{% url 'index' %}">About</a></li>
+      <li class="li"><a href="{% url 'pestle_view' %}">PESTLE Analysis</a></li>
+      <li class="li"><a href="{% url 'hofsted_view' %}">Hofsted Analysis</a></li>
+      <li class="li">About</li>
+      <li class="li">About</li>
+      <li class="li">About</li>
+    </ul>
+  </div>
+</div>
+    </div>
   </body>
 </html>

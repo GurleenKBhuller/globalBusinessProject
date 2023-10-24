@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+  {% load static %}
+  <style>
+    .btn-circle.btn-xl {
+      width: 200px;
+      height: 200px;
+      padding: 13px 18px;
+      border-radius: 100px;
+      font-size: 60px;
+      text-align: center;
+    }
+    .rectangle {
+      width: 95%;
+      height: 70%;
+    }
+
+  </style>
+  <div>
+    <div style="height: 250px; padding-bottom: 25%; background-color: #ebe6b8; margin-top: 3%;" class="row">
+      <div class="col-md-2">
+        <button style="margin-top: 25%; margin-left: 3%" class="buttonP btn btn-warning btn-xl btn-circle">P</button>
+      </div>
+      <div class="col-md-10">
+        <div id="political" class="rectangle" style="margin-top: 6%; border-top: 1.5px solid #ffc107; border-bottom: 1.5px solid #ffc107;">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero voluptas ad, ex rerum dolor inventore laboriosam temporibus repellat illum fugit est totam aperiam magnam alias, error reprehenderit sunt ipsum?
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelector(".buttonP").addEventListener("mouseover", function() {
+    this.textContent = "POLITICAL";
+    this.style.fontSize = "18px";
+  });
+  document.querySelector(".buttonP").addEventListener("mouseout", function() {
+    this.textContent = "P";
+    this.style.fontSize = "60px";
+  });
+  document.getElementById("political").addEventListener("mouseover", function() {
+    this.style.opacity = "1.5";
+    this.textContent = "dgewyufguew4gruewsgueuirtgsfrgeyrgfeugfesufgueryff";
+  });
+  document.getElementById("political").addEventListener("mouseout", function() {
+    this.textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero voluptas ad, ex rerum dolor inventore laboriosam temporibus repellat illum fugit est totam aperiam magnam alias, error reprehenderit sunt ipsum?";
+  });
+
+</script>
+{% endblock %}
