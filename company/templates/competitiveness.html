@@ -295,7 +295,7 @@
 
 
       #flag1 { 
-        width: 75px; height: 49.5px; background: #24b47e; position: relative;
+        width: 75px; height: 49px; background: #24b47e; position: relative;
         margin-left: 35px;
         color: white;
         line-height: 50px;
@@ -328,6 +328,117 @@
       
         border-left: 35px solid #24b47e;
       }
+
+      .speech {
+        width:85%;
+       color: #fff;
+       background:#fa8321;
+       position: relative;
+       padding: 2%;
+       text-align: center;
+       border-radius: 10px;
+       margin: 25% auto;
+     }
+     
+     .speech::after {
+       content: "";
+       border: 20px solid transparent;
+       position: absolute;
+     }
+      
+     .top.speech::after {
+       border-bottom-color:#fa8321;
+       border-top: 0;
+       top: -20px; left: 50%;
+       margin-left: -40px;
+     }
+
+     .button-571 {
+      background-size:cover;
+      width: 120px;
+    height: 120px;
+    border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #555ac0;
+      color: #555ac0 !important;
+      display: inline-block;
+      font-size: 15px;
+      line-height: 15px;
+      padding: 18px 18px 17px;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+     
+     .button-57 {
+      width: 120px;
+    height: 120px;
+    border-radius: 50%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #24b47e;
+      color: #24b47e !important;
+      display: inline-block;
+      font-size: 15px;
+      line-height: 15px;
+      padding: 18px 18px 17px;
+      text-decoration: none;
+      cursor: pointer;
+      background: #fff;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    .button-57 span:first-child {
+      position: relative;
+      transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+      z-index: 10;
+    }
+    
+    .button-57 span:last-child {
+      color: white;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+      z-index: 100;
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+      transform: translateY(225%) translateX(-50%);
+      height: 14px;
+      line-height: 13px;
+    }
+    
+    .button-57:after {
+      content: "";
+      position: absolute;
+      bottom: -50%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #555ac0;
+      transform-origin: bottom center;
+      transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+      transform: skewY(9.3deg) scaleY(0);
+      z-index: 50;
+    }
+    
+    .button-57:hover:after {
+      transform-origin: bottom center;
+      transform: skewY(9.3deg) scaleY(2);
+    }
+    
+    .button-57:hover span:last-child {
+      transform: translateX(-50%) translateY(-100%);
+      opacity: 1;
+      transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+    }
+
+    
   </style>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr;">
@@ -387,7 +498,7 @@
         <div class="timeline__event__content">
           <div class="timeline__event__description">
             <p style="color: black !important;">
-                The company possesses a distinctive tensile strength technology 
+                The company possesses a patented tensile strength technology 
                 that leverages engineering expertise to precisely measure pressure 
                 and compression, resulting in the creation of perfectly hard 
                 and finely crafted cutlery.
@@ -459,49 +570,219 @@
         </div>
       </div>
   </div>
+<div>
+    <strong style="color:#fa8321 !important; font-size:xx-large; margin:2%">
+      VALUE CHAIN SHOWED HIGER PROFIT IN SOUTH KOREA
+    </strong>
+</div>
+  <div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%; margin-bottom:2% !important">
+    <div style="color:#555ac0 !important; margin-top:20%;">USA (per spoon)</div>
+    <div id="flag">1.4¢</div>
 
-  <div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%;">
-    <div style="color:#555ac0 !important; margin-top:20%;">USA</div>
-    <div id="flag">This is it!</div>
+    <div id="flag">1.6¢</div>
 
-    <div id="flag">This is it!</div>
+    <div id="flag">3.5¢</div>
 
-    <div id="flag">This is it!</div>
+    <div id="flag">2.5¢</div>
 
-    <div id="flag">This is it!</div>
+    <div id="flag">1¢</div>
 
-    <div id="flag">This is it!</div>
-
-    <div id="flag">This is it!</div>
+    <div id="flag">10¢ / 20¢</div>
 
 </div>
 
 
-<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin-left: 7%;">
+<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin-left: 5%;">
     <div></div>
     <div style="color:#fa8321 !important; font-size: large;">Raw Material</div>
     <div style="color:#fa8321 !important; font-size: large;">Design, R&D</div>
   <div style="color:#fa8321 !important; font-size: large;">Production</div>
   <div style="color:#fa8321 !important; font-size: large;">Packaging</div>
   <div style="color:#fa8321 !important; font-size: large;">Marketing</div>
-  <div style="color:#fa8321 !important; font-size: large;">Retail</div>
+  <div style="color:#fa8321 !important; font-size: large;margin-top: -18%"><b style="color:#555ac0 !important;">Profit: 10¢</b>
+    <br>Retail<br>
+    <b style="color:#24b47e !important;">Profit: 10.4¢</b></div>
 
 </div>
 
-<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%;">
-    <div style="color:#24b47e !important; margin-top:20%;">South Korea</div>
-    <div id="flag1" style="display: flex; justify-content: center;">This is it!</div>
+<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%; margin-bottom:0% !important; margin-top:1% !important">
+    <div style="color:#24b47e !important; margin-top:20%;">South Korea (per spoon)</div>
+    <div id="flag1">2¢</div>
 
-    <div id="flag1">This is it!</div>
+    <div id="flag1">1.2¢</div>
 
-    <div id="flag1">This is it!</div>
+    <div id="flag1">2.5¢</div>
 
-    <div id="flag1">This is it!</div>
+    <div id="flag1">2¢</div>
 
-    <div id="flag1">This is it!</div>
+    <div id="flag1">1.9¢</div>
 
-    <div id="flag1">This is it!</div>
+    <div id="flag1">9.6¢ / 20¢</div>
 
 </div>
 
+<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+<div></div>
+  <div class="speech top">
+    Higer price of raw material such as wheat, oats, corn.
+  </div>
+  <div class="speech top">
+    Innovative machines at a lower price.
+  </div>
+  <div class="speech top">
+    Lower cost of utilities and cheaper labor.
+  </div>
+  <div class="speech top">
+    Affordable eco-friendly packaging due to plastic ban.
+  </div>
+  <div class="speech top">
+    Language challenge in marketing.
+  </div>
+  <div class="speech top">
+    Higer final profit.
+  </div>
+</div>
+
+<div style="margin-bottom: 5% !important;">
+  <strong style="color:#fa8321 !important; font-size:xx-large; margin:2%;">
+    PORTER'S ANALYSIS CONCLUDES BOTH MARKETS GREAT FOR BUSINESS</strong>
+    <br><strong style="color:#fa8321 !important; font-size:xx-large; margin:2%;"> DUE TO SPECIALIZED TECH AND COMPETITIVE EDGE
+  </strong>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; margin:5%;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+    <div>
+    </div>
+    <div>
+      <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+        Bargaining Power of Suppliers - <b style="color: #24b47e !important;">2</b>
+      </span><span style="margin-top:-12%; font-size: small;">Large number of suppliers and high supply</span></button>
+      <br>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-down" viewBox="0 0 16 16" style="margin-bottom: -18%; margin-left: 28%;">
+        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+      </svg>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+    <div>
+  </div>
+  <div>
+    <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+      Bargaining Power of Suppliers - <b style="color: #24b47e !important;">2</b>
+      </span><span style="margin-top:-12%; font-size: small;">Large number of suppliers and high supply</span></button>
+      <br>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-down" viewBox="0 0 16 16" style="margin-bottom: -18%; margin-left: 28%;">
+      <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+    </svg>
+  </div>
+  <div>
+  </div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; margin:5%; margin-top:-3% !important">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+    <div>
+      <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+        Threat of New Entrants - <b style="color: #24b47e !important;">1</b>
+      </span><span style="margin-top:-20%; font-size: small;">Mass production, patented technology that gives competitive edge</span>
+    </button>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-right" viewBox="0 0 16 16" style="margin-left: 5%;">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+      </svg>
+    </div>
+    <div>
+      <button class="button-571" role="button" style="background-image: url({% static 'us.png' %});">
+        <b class="text" style="color: #555ac0 !important; font-size: larger;">
+          Industry Rivalry<br>(USA = 6)
+        </b>
+      </button>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-left: 5%; margin-top:-10%">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+      </svg>
+    </div>
+    <div>
+      <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+        Threat of Substitutes - <b style="color: #24b47e !important;">2</b>
+      </span><span style="margin-top:-30%; font-size: smaller;">Special tensile strength technology and good flavours but a little high cost</span>
+    </button>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+    <div>
+      <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+        Threat of New Entrants - <b style="color: #24b47e !important;">3</b>
+      </span><span style="margin-top:-20%; font-size: small;">Huge business interest in edible cutlery due to plastic ban.</span>
+    </button>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-right" viewBox="0 0 16 16" style="margin-left: 5%;">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+      </svg>
+    </div>
+  <div>
+    <button class="button-571" role="button" style="background-image: url({% static 'korea.png' %});">
+      <b class="text" style="color: #555ac0 !important; font-size: larger;">
+        Industry Rivalry<br>(South Korea = 8)
+      </b>
+    </button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-left: 5%; margin-top:-10%">
+      <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+    </svg>
+  </div>
+  <div>
+    
+    <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+      Threat of Substitutes - <b style="color: #24b47e !important;">1</b>
+    </span><span style="margin-top:-30%; font-size: smaller;">Special tensile strength tech and competitive cost with good flavors</span>
+  </button>
+  </div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; margin:5%; margin-top:-3% !important">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+    <div>
+    </div>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-up" viewBox="0 0 16 16" style="    margin-top: -18%;
+      margin-left: 28%;">
+        <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+      </svg><br>
+      <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+        Bargaining Power of Buyers - <b style="color: #24b47e !important;">1</b>
+      </span><span style="margin-top:-12%; font-size: small;">Great dominance over market</span>
+    </button>
+      
+    </div>
+    <div>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; margin:5%; margin-top:-3% !important">
+    <div>
+  </div>
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#24b47e" class="bi bi-arrow-up" viewBox="0 0 16 16" style="    margin-top: -18%;
+    margin-left: 28%;">
+      <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+    </svg><br>
+    <button class="button-57" role="button"><span class="text" style="color: #24b47e !important;">
+      Bargaining Power of Buyers - <b style="color: #24b47e !important;">2</b>
+    </span><span style="margin-top:-18%; font-size: small;">Expected dominance over market, no substitutes yet</span>
+  </button>
+  </div>
+  <div>
+  </div>
+  </div>
+</div>
+
+<div style="margin-bottom: 5% !important; margin-top:-4%">
+  <p style="color:#fa8321 !important; font-size:medium; margin:2%;">
+    Overall, South Korea is a good market for Incredible Eats to launch the business.
+    But since the country has decided to go plastic free, other competitors may also be interested
+    in the same business over time. The superior technology and mass manufacturing will provide
+    competitive edge but the company will need to adjust to the local flavors.
+  </p>
+  </strong>
+</div>
 {% endblock %}
