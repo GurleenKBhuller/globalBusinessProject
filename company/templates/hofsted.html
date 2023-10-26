@@ -1,457 +1,720 @@
-{% extends "base.html" %} {% block content %} {% load static %}
-<style>
+{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    <style>
 
-  .ribbon {
-    font-size: 20px;
-    position: relative;
-    display: inline-block;
-    text-align: center;
-  }
-  .text {
-    display: inline-block;
-    padding: 0.5em 1em;
-    min-width: 8em;
-    line-height: 0.2em;
-    background: #fa8321;
-    position: relative;
-  }
-  .ribbon:after,
-  .ribbon:before,
-  .text:before,
-  .text:after,
-  .bold:before {
-    content: "";
-    position: absolute;
-    border-style: solid;
-  }
-  .ribbon:before {
-    top: 0.3em;
-    left: 0.2em;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #ebeced;
-    z-index: -2;
-  }
-  .text:before {
-    bottom: 100%;
-    left: 0;
-    border-width: 0.5em 0.7em 0 0;
-    border-color: transparent #fa8321 transparent transparent;
-  }
-  .text:after {
-    top: 100%;
-    right: 0;
-    border-width: 0.5em 2em 0 0;
-    border-color: #fa8321 transparent transparent transparent;
-  }
-  .ribbon:after,
-  .bold:before {
-    top: 0.5em;
-    right: -2em;
-    border-width: 0.6em 1em 0.6em 3em;
-    border-color: #fa8321 transparent #fa8321 #fa8321;
-    z-index: -1;
-  }
-  .bold:before {
-    border-color: #ebeced transparent #ebeced #ebeced;
-    top: 0.7em;
-    right: -2.3em;
-  }
+        .ribbon {
+            font-size: 20px;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+        .text {
+            display: inline-block;
+            padding: 0.5em 1em;
+            min-width: 8em;
+            line-height: 0.2em;
+            background: #fa8321;
+            position: relative;
+        }
+        .ribbon:after,
+        .ribbon:before,
+        .text:before,
+        .text:after,
+        .bold:before {
+            content: "";
+            position: absolute;
+            border-style: solid;
+        }
+        .ribbon:before {
+            top: 0.3em;
+            left: 0.2em;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ebeced;
+            z-index: -2;
+        }
+        .text:before {
+            bottom: 100%;
+            left: 0;
+            border-width: 0.5em 0.7em 0 0;
+            border-color: transparent #fa8321 transparent transparent;
+        }
+        .text:after {
+            top: 100%;
+            right: 0;
+            border-width: 0.5em 2em 0 0;
+            border-color: #fa8321 transparent transparent transparent;
+        }
+        .ribbon:after,
+        .bold:before {
+            top: 0.5em;
+            right: -2em;
+            border-width: 0.6em 1em 0.6em 3em;
+            border-color: #fa8321 transparent #fa8321 #fa8321;
+            z-index: -1;
+        }
+        .bold:before {
+            border-color: #ebeced transparent #ebeced #ebeced;
+            top: 0.7em;
+            right: -2.3em;
+        }
 
-  .footer{
-    margin:-3%;
-    overflow-y: hidden;
-  }
+        .footer {
+            margin: -3%;
+            overflow-y: hidden;
+        }
 
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
 
-@mixin transition($transition-property, $transition-time, $method) {
-    -webkit-transition: $transition-property $transition-time $method;
-    -moz-transition: $transition-property $transition-time $method;
-    -ms-transition: $transition-property $transition-time $method;
-    -o-transition: $transition-property $transition-time $method;
-    transition: $transition-property $transition-time $method;
-}
-*{ box-sizing:border-box;}
+        @mixin transition($transition-property, $transition-time, $method) {
+            -webkit-transition: $transition-property $transition-time $method;
+            -moz-transition: $transition-property $transition-time $method;
+            -ms-transition: $transition-property $transition-time $method;
+            -o-transition: $transition-property $transition-time $method;
+            transition: $transition-property $transition-time $method;
+        }
+        * {
+            box-sizing: border-box;
+        }
 
-.holder{
-  width: 50%;
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -o-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
+        .holder {
+            width: 50%;
+            -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
 
-}
+        }
 
-.spantext{
-  -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -o-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
+        .spantext {
+            -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            -o-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+        }
 
-body {
-  color: #333;
-  -webkit-font-smoothing: antialiased;
-  font-family: 'Montserrat', sans-serif;
-  padding: 2%;
-  overflow-y: hidden;
- 
-}
-.wrap {
-  width: 50%;
-  margin-bottom: 10%;
-  margin-left: 40%;
-}
-h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.5em;
-  padding: .5em 0;
-  margin-bottom: 1em;
-  border-bottom: 1px solid #dadada;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-ul {
- 	li {
-  		line-height: 2;
-   		font-weight: bold;
-  		font-family:'Montserrat', sans-serif;
-  		font-size: .85em;text-transform: uppercase;
-  		clear: both;
-		// border-bottom: 1px solid $border;
-		&:before {
-			content: "\2023";
-			padding: 0 1em 0 0;
-		}
- 	}
- }
- .bar {
- 	background:#e74c3c;
- 	width: 0;
- 	margin: .25em 0;
- 	color: #fff;
- 	position: relative;
- 	 transition:width 2s, background .2s;
-   -webkit-transform: translate3d(0,0,0);
- 	 clear: both;
- 	 &:nth-of-type(2n) {
- 	 	background:lighten(#e74c3c , 10% );
- 	 }
- 	 .label {
-		font-size: .75em;
-		padding: 1em;
-		width: 4em;
-    opacity: 0.5;
-		display: inline-block;
-		position: relative;
-		z-index: 2;
-		font-family: 'Montserrat', sans-serif;
-		 &.light {
- 	 }
+        body {
+            color: #333;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Montserrat', sans-serif;
+            padding: 2%;
+            overflow-y: hidden;
 
-}
- }
- .count {
-	position: absolute;
-	right: .25em;
-	top: .75em;
- 	padding: .15em; 
-	font-size: .75em;
-	font-weight: bold;
-	font-family: 'Montserrat', sans-serif;
- }
-</style>
-<div
-  style="
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 6%;
-    margin-left: 8%;
-  "
->
-  <div style="margin-left: 5%">
-    <table style="text-align: center">
-      <tbody>
-        <tr>
-          <td>
-            <img
-              src="{% static 'usa_flag.png' %}"
-              style="
-                height: 50%;
-                width: 40%;
-                margin-bottom: -2%;
-                margin-left: 40%;
-              "
-            />
-          </td>
-        </tr>
+        }
+        .wrap {
+            width: 50%;
+            margin-bottom: 10%;
+            margin-left: 40%;
+            margin-top: -12%;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 0.5em 0;
+            margin-bottom: 1em;
+            border-bottom: 1px solid #dadada;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        ul {
+            li {
+                line-height: 2;
+                font-weight: bold;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 0.85em;
+                text-transform: uppercase;
+                clear: both;
+                &:before {
+                    content: "\2023";
+                    padding: 0 1em 0 0;
+                }
+            }
+        }
+        .bar {
+            background: #e74c3c;
+            width: 0;
+            margin: 0.25em 0;
+            color: #fff;
+            position: relative;
+            transition: width 2s, background 0.2s;
+            -webkit-transform: translate3d(0, 0, 0);
+            clear: both;
+            &:nth-of-type(2n) {
+                background: lighten(#e74c3c , 10%);
+            }
+            .label {
+                font-size: 0.75em;
+                padding: 1em;
+                width: 4em;
+                opacity: 0.5;
+                display: inline-block;
+                position: relative;
+                z-index: 2;
+                font-family: 'Montserrat', sans-serif;
 
-        <tr>
-          <td>
-            <p class="ribbon">
-              <span class="text"><strong class="bold">USA</strong></span>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div
-              class="card"
-              style="
-                z-index: -3;
-                margin-top: -5%;
-                margin-left: 25%;
-                width: 18rem;
-              "
-            >
-              <div class="card-body">
-                <div class="row">
-                  <div
-                    class="col-12 rounded-top"
-                    style="background-color: #f1aeb5; height: 50px"
-                  >
-                    <!-- Content for the first div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12"
-                    style="background-color: #9ec5fe; height: 50px"
-                  >
-                    <!-- Content for the second div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12"
-                    style="background-color: #f1aeb5; height: 50px"
-                  >
-                    <!-- Content for the third div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12"
-                    style="background-color: #9ec5fe; height: 50px"
-                  >
-                    <!-- Content for the fourth div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12 rounded-bottom"
-                    style="background-color: #f1aeb5; height: 50px"
-                  >
-                    <!-- Content for the fifth div -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+            }
+        }
+        .count {
+            position: absolute;
+            right: 0.25em;
+            top: 0.75em;
+            padding: 0.15em;
+            font-size: 0.75em;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-  <div style="margin-top: 15%">
-    <table style="text-align: left">
-      <tbody>
-        <tr>
-          <td>
-            <img
-              src="{% static 'korea_flag.png' %}"
-              style="
-                height: 50%;
-                width: 40%;
-                margin-bottom: -4%;
-                margin-left: 6%;
-                transform: rotate(10deg);
-              "
-            />
-          </td>
-        </tr>
+        .compare {
+            border-bottom: 1px solid #fa8321;
+            margin-top: -5%;
+            text-align: center;
+            border-top: 1px solid #fa8321;
 
-        <tr>
-          <td>
-            <p class="ribbon">
-              <span class="text"
-                ><strong class="bold">South Korea</strong></span
-              >
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div
-              class="card"
-              style="
-                z-index: -3;
-                margin-top: -4%;
-                margin-left: -8%;
-                width: 18rem;
-              "
-            >
-              <div class="card-body">
-                <div class="row">
-                  <div
-                    class="col-12 rounded-top"
-                    style="background-color: #f1aeb5; height: 50px"
-                  >
-                    <!-- Content for the first div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12"
-                    style="background-color: #9ec5fe; height: 50px"
-                  >
-                    <!-- Content for the second div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12"
-                    style="background-color: #f1aeb5; height: 50px"
-                  >
-                    <!-- Content for the third div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12"
-                    style="background-color: #9ec5fe; height: 50px"
-                  >
-                    <!-- Content for the fourth div -->
-                  </div>
-                </div>
-                <div class="row">
-                  <div
-                    class="col-12 rounded-bottom"
-                    style="background-color: #f1aeb5; height: 50px"
-                  >
-                    <!-- Content for the fifth div -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+        }
+        .button-891 {
+          --b: 3px;   /* border thickness */
+          --s: .45em; /* size of the corner */
+          --color: #5796f4;
+          
+          padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+          color: var(--color);
+          --_p: var(--s);
+          background:
+            conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+            var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+          transition: .3s linear, color 0s, background-color 0s;
+          outline: var(--b) solid #0000;
+          outline-offset: .6em;
+          font-size: 16px;
+        
+          border: 0;
+        
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
 
-<div>
-  <div class="wrap">
-    <div class="holder">
-      <!-- POWER DISTANCE -->
-        <div class="bar cf" data-percent="40%" style="background:red">
-          <span class="label" >USA</span>
+        .button-891:hover,
+        .button-891:focus-visible{
+          --_p: 0px;
+          outline-color: var(--color);
+          outline-offset: .05em;
+        }
+        
+        .button-891:active {
+          background: var(--color);
+          color: #fff;
+        }
+
+        .button-89 {
+          --b: 3px;   /* border thickness */
+          --s: .45em; /* size of the corner */
+          --color: #e74c3c;
+          
+          padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+          color: var(--color);
+          --_p: var(--s);
+          background:
+            conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+            var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+          transition: .3s linear, color 0s, background-color 0s;
+          outline: var(--b) solid #0000;
+          outline-offset: .6em;
+          font-size: 16px;
+        
+          border: 0;
+        
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+        }
+        
+        .button-89:hover,
+        .button-89:focus-visible{
+          --_p: 0px;
+          outline-color: var(--color);
+          outline-offset: .05em;
+        }
+        
+        .button-89:active {
+          background: var(--color);
+          color: #fff;
+        }
+        
+    </style>
+    <div style="display: grid; grid-template-columns: 1fr 1fr;
+                                        margin-top: 6%;
+                                        margin-left: 8%;">
+        <div style="margin-left: 5%">
+            <table style="text-align: center">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="{% static 'usa_flag.png' %}" style="height: 50%;width: 40%;margin-bottom: -2%;margin-left: 40%;"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p class="ribbon">
+                                <span class="text">
+                                    <strong class="bold">USA</strong>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <div class="accordion" style=" width: 18rem; margin-top: -1%;  margin-left: 25%;" id="accordionExample">
+                                <div class="accordion-item" style="background-color: #f1aeb5;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" style="background-color: #f1aeb5;" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Power Distance
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            USA is a culture that prioritizes equal rights, accessibility of superiors, and open, participative communication within organizations.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item" style="background-color: #9ec5fe;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #9ec5fe;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Individualism
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            The United States  is an individualistic culture that values equal rights, emphasizes accessibility to superiors, encourages self-reliance and initiative
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item" style="background-color: #f1aeb5;">
+                                  <h2 class="accordion-header">
+                                      <button class="accordion-button" type="button" style="background-color: #f1aeb5;" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                          Masculine vs Feminine
+                                      </button>
+                                  </h2>
+                                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                      <div class="accordion-body">
+                                        USA is masculine with an emphasis on striving for individual success, openly showcasing achievements, and a "can-do" mentality, even though it may contribute to increasing inequality and eroding the American ideals of "liberty and justice for all".                                      </div>
+                                  </div>
+                              </div>
+
+                                <div class="accordion-item" style="background-color: #9ec5fe;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #9ec5fe;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Uncertainity Avoidance
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            The United States, stands at about half on Uncertainity Avoidance and exhibits a cultural pattern marked by openness to new ideas, innovation, and freedom of expression.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item" style="background-color: #f1aeb5;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #f1aeb5;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            Long term vs Short term Perspectives
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            The United States is at mid on this dimension, indicating a lack of a dominant preference, but it showcases a practical and results-driven culture that often analyzes new information for its
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item" style="background-color: #9ec5fe;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #9ec5fe;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            Indulgence
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            The USA is high on the Indulgence dimension, displays contradictory attitudes, as seen in the emphasis on hard work alongside high rates of drug addiction, and in the prevalence of prudishness juxtaposed with instances of perceived immorality in public figures.
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="bar cf" data-percent="60%" style="background:green;margin-bottom: 10%;">
-          <span class="label light" >SKorea</span>
+
+        <div style="margin-top: 15%;">
+            <table style="text-align: left">
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="{% static 'korea_flag.png' %}" style="
+                                                                                                    height: 50%;
+                                                                                                    width: 40%;
+                                                                                                    margin-bottom: -4%;
+                                                                                                    margin-left: 6%;
+                                                                                                    transform: rotate(10deg);
+                                                                                                  "/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p class="ribbon">
+                                <span class="text">
+                                    <strong class="bold">South Korea</strong>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% comment %}
+                                <div
+                                                                                                              class="card"
+                                                                                                              style="
+                                                                                                                z-index: -3;
+                                                                                                                margin-top: -4%;
+                                                                                                                margin-left: -8%;
+                                                                                                                width: 18rem;
+                                                                                                              "
+                                                                                                            >
+                            {% endcomment %}
+
+                            <div class="accordion" style=" width: 18rem; margin-top: -1%;  margin-left: -8%;" id="accordionExample1">
+                                <div class="accordion-item" style="background-color: #f1aeb5;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" style="background-color: #f1aeb5;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                                            Power Distance
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample1">
+                                        <div class="accordion-body">
+                                            South Korea is a society that accepts hierarchy, favors centralized authority, and often values benevolent autocratic leadership.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item" style="background-color: #9ec5fe;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" style="background-color: #9ec5fe;" data-bs-toggle="collapse" data-bs-target="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo1">
+                                            Individualism
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo1" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
+                                        <div class="accordion-body">
+                                            South Korea represents a highly collectivistic society, emphasizing strong, long-term commitments to family and group relationships, where loyalty and responsibility to the group are paramount, and social rules often take precedence over individual interests.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item" style="background-color: #f1aeb5;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #f1aeb5;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                                            Masculine vs Feminine
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree1" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
+                                        <div class="accordion-body">
+                                            South Korea is tilted towards feminine qualities and is a Consensus society that emphasizes equality, solidarity, and well-being, with managers striving for consensus and decisions made through involvement and negotiation.
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="accordion-item" style="background-color: #9ec5fe;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #9ec5fe;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+                                            Uncertainity Avoidance
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            South Korea, with a high Uncertainty Avoidance score, is characterized by a culture that values strict codes of behavior, resists unorthodox ideas, prioritizes precision, punctuality, and hard work, and places significant importance on security in individual motivation.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="accordion-item" style="background-color: #f1aeb5;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #f1aeb5;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive1" aria-expanded="false" aria-controls="collapseFive1">
+                                            Long term vs Short term Perspectives
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFive1" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
+                                        <div class="accordion-body">
+                                            South Korea is among the most pragmatic and long-term-oriented societies, emphasizing virtues, practical examples, and the durability of companies serving stakeholders and society over generations.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item" style="background-color: #9ec5fe;">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" style="background-color: #9ec5fe;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix1" aria-expanded="false" aria-controls="collapseSix1">
+                                            Indulgence
+                                        </button>
+                                    </h2>
+                                    <div id="collapseSix1" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
+                                        <div class="accordion-body">
+                                            South Korea's low Indulgence score indicates a cultural tendency toward cynicism and pessimism, a lesser emphasis on leisure, and a belief that indulgence goes against social norms.
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      <!-- Individualism -->
-      
-      <div class="bar cf" data-percent="60%" style="background:red">
-        <span class="label">USA</span>
-      </div>
-      <div class="bar cf" data-percent="18%" style="background:green;margin-bottom: 10%;">
-        <span class="label light">SKorea</span>
-      </div>
-      <!--masculine vs feminine-->
-      <div class="bar cf" data-percent="62%" style="background:red">
-        <span class="label">USA</span>
-      </div>
-      <div class="bar cf" data-percent="39%" style="background:green;margin-bottom: 10%;">
-        <span class="label light">SKorea</span>
-      </div>
-      <!-- Uncertainity Avoidance -->
-      <div class="bar cf" data-percent="46%" style="background:red">
-        <span class="label light">USA</span>
-      </div>
-      <div class="bar cf" data-percent="85%" style="background:green;margin-bottom: 10%;">
-        <span class="label">SKorea</span>
-      </div>
-      <!-- Short term vs long term perspective -->
-      <div class="bar cf" data-percent="50%" style="background:red">
-        <span class="label light">USA</span>
-      </div>
-      <div class="bar cf" data-percent="100%"style="background:green;margin-bottom: 10%;">
-        <span class="label">SKorea</span>
-      </div>
-      <!-- Indulgance -->
-      <div class="bar cf" data-percent="68%" style="background:red">
-        <span class="label light">USA</span>
-      </div>
-      <div class="bar cf" data-percent="29%"style="background:green;margin-bottom: 10%;">
-        <span class="label">SKorea</span>
-      </div>
     </div>
-    <div style="color:black !important; position: relative;
-    z-index: 2;margin-top: -35%; margin-left:-30%; font-size: small;">Power Distance &nbsp; &nbsp; &emsp; Individualism
-  <font style="font-size: smaller; color:black !important">&nbsp; &nbsp; &emsp; &emsp; Masculine vs Feminine  &nbsp; &emsp;Uncertainity Avoidance
-    &nbsp; &emsp; Short vs Long term</font>
-    &nbsp; &nbsp; &emsp; Indulgance
+
+    <div>
+        <div class="wrap">
+            <div
+                class="holder">
+                <!-- POWER DISTANCE -->
+                <div class="bar cf" data-percent="40%" style="background:#f74053">
+                    <span class="label">USA</span>
+                </div>
+                <div class="bar cf" data-percent="60%" style="background:#5796f4;margin-bottom: 10%;">
+                    <span class="label light">SKorea</span>
+                </div>
+                <!-- Individualism -->
+
+                <div class="bar cf" data-percent="60%" style="background:#f74053">
+                    <span class="label">USA</span>
+                </div>
+                <div class="bar cf" data-percent="18%" style="background:#5796f4;margin-bottom: 10%;">
+                    <span class="label light">SK</span>
+                </div>
+                <!--masculine vs feminine-->
+                <div class="bar cf" data-percent="62%" style="background:#f74053">
+                    <span class="label">USA</span>
+                </div>
+                <div class="bar cf" data-percent="39%" style="background:#5796f4;margin-bottom: 10%;">
+                    <span class="label light">SKorea</span>
+                </div>
+                <!-- Uncertainity Avoidance -->
+                <div class="bar cf" data-percent="46%" style="background:#f74053">
+                    <span class="label light">USA</span>
+                </div>
+                <div class="bar cf" data-percent="85%" style="background:#5796f4;margin-bottom: 10%;">
+                    <span class="label">SKorea</span>
+                </div>
+                <!-- Short term vs long term perspective -->
+                <div class="bar cf" data-percent="50%" style="background:#f74053">
+                    <span class="label light">USA</span>
+                </div>
+                <div class="bar cf" data-percent="100%" style="background:#5796f4;margin-bottom: 10%;">
+                    <span class="label">SKorea</span>
+                </div>
+                <!-- Indulgence -->
+                <div class="bar cf" data-percent="68%" style="background:#f74053">
+                    <span class="label light">USA</span>
+                </div>
+                <div class="bar cf" data-percent="29%" style="background:#5796f4;margin-bottom: 10%;">
+                    <span class="label">SKorea</span>
+                </div>
+            </div>
+            <div style="color:black !important; position: relative;
+                                                    z-index: 2;margin-top: -35%; margin-left:-30%; font-size: small;">Power Distance &nbsp; &nbsp; &emsp; Individualism
+                <font style="font-size: smaller; color:black !important">&nbsp; &nbsp; &emsp; &emsp; Masculine vs Feminine  &nbsp; &emsp;Uncertainity Avoidance
+                                                                &nbsp; &emsp; Short vs Long term</font>
+                &nbsp; &nbsp; &emsp; &emsp; Indulgence
+
+            </div>
+        </div>
+
+    </div>
+
+
+   <div class="bottomcompare" style="margin-bottom: 3%;  border-bottom: 1px solid #fa8321;">
+    <div class="comparison1">
+      <div class="compare">
+              <strong style="font-size: x-large;
+                            color: #5796f4 !important;
+                            ">POWER DISTANCE</strong>
+      </div>
+        <div class="hexagon" style="display: grid; grid-template-columns: 1fr 5fr 1fr; ">
+<div>
+  <button class="button-89" role="button"><b style="color:#e74c3c !important;">USA</b></button>
+</div>    
+<div style="color:#fa8321 !important; margin-left:-5%">
+  While taking the company from USA to South Korea,
+  there is a shift from an egalitarian, participative work culture to a more hierarchical, centralized one. 
+  So, building relationships with officials, respecting local customs and adapting to leadership style 
+  will be crucial.
+</div>      
+<div>
+  <button class="button-891" role="button"><b style="color:#5796f4 !important;">South Korea</b></button>
 
 </div>
+            </div>
+      </div>
+      <div class="comparison1">
+        <div class="compare" style="margin-top: 0% !important;">
+                <strong style="font-size: x-large;
+                              color: #e74c3c !important;
+                              ">INDIVIDUALISM</strong>
+        </div>
+          <div class="hexagon" style="display: grid; grid-template-columns: 1fr 5fr 1fr; ">
+  <div>
+    <button class="button-89" role="button"><b style="color:#e74c3c !important;">USA</b></button>
+  </div>    
+  <div style="color:#fa8321 !important; margin-left:-5%">
+    Adapting to the shift from individualism in USA to collectivism in South Korea, where group loyalty and social rules are paramount, 
+    is going to need adjustments in decision-making processes and management styles. The company will foster strong interpersonal relationships, consider group dynamics in decision-making, and prioritize long-term commitment to build trust and succeed in the South Korean market.
+  </div>      
+  <div>
+    <button class="button-891" role="button"><b style="color:#5796f4 !important;">South Korea</b></button>
+  
   </div>
+              </div>
+        </div>
 
-</div>
+        <div class="comparison1">
+          <div class="compare" style="margin-top: 0% !important;">
+                  <strong style="font-size: x-large;
+                                color: #5796f4 !important;
+                                ">UNCERTAINITY AVOIDANCE</strong>
+          </div>
+            <div class="hexagon" style="display: grid; grid-template-columns: 1fr 5fr 1fr; ">
+    <div>
+      <button class="button-89" role="button"><b style="color:#e74c3c !important;">USA</b></button>
+    </div>    
+    <div style="color:#fa8321 !important; margin-left:-5%">
+      This factor might be an indication of the challenges related to divergent attitudes toward 
+      innovation and risk-taking. To navigate this, Incredible Eats will prioritize clear communication,
+       and demonstrate a respect for established norms and protocols.    </div>      
+    <div>
+      <button class="button-891" role="button"><b style="color:#5796f4 !important;">South Korea</b></button>
+    
+    </div>
+                </div>
+          </div>
+
+          <div class="comparison1">
+            <div class="compare" style="margin-top: 0% !important;">
+                    <strong style="font-size: x-large;
+                                  color: #e74c3c !important;
+                                  ">MASCULINE VS FEMININE </strong>
+            </div>
+              <div class="hexagon" style="display: grid; grid-template-columns: 1fr 5fr 1fr; ">
+      <div>
+        <button class="button-89" role="button"><b style="color:#e74c3c !important;">USA</b></button>
+      </div>    
+      <div style="color:#fa8321 !important; margin-left:-5%">
+        When taking Incredible Eats from the US (a masculine society) to South Korea (a consensus-based,
+         feminine society), challenges may arise concerning decision-making styles and priorities.
+         To overcome this, the company will emphasize on feminine values such as 
+         consensus-building, and a more collaborative work culture that values 
+         both individual success and group cohesion.      </div>      
+      <div>
+        <button class="button-891" role="button"><b style="color:#5796f4 !important;">South Korea</b></button>
+      
+      </div>
+                  </div>
+            </div>
+
+            <div class="comparison1">
+              <div class="compare" style="margin-top: 0% !important;">
+                      <strong style="font-size: x-large;
+                                    color: #5796f4 !important;
+                                    ">SHORT TERM VS LONG TERM PERSPECTIVE</strong>
+              </div>
+                <div class="hexagon" style="display: grid; grid-template-columns: 1fr 5fr 1fr; ">
+        <div>
+          <button class="button-89" role="button"><b style="color:#e74c3c !important;">USA</b></button>
+        </div>    
+        <div style="color:#fa8321 !important; margin-left:-5%">
+          There are differing cultural orientations towards practicality and long-term focus between USA and South Korea.
+          To address this, the company will ensure that the business strategies
+          align with South Korea's emphasis on enduring value, 
+          relationships, and the long-term well-being of stakeholders and society such as by 
+          prioritizing to steady growth of market share rather than to a quarterly profit.
+                </div>      
+        <div>
+          <button class="button-891" role="button"><b style="color:#5796f4 !important;">South Korea</b></button>
+        
+        </div>
+                    </div>
+              </div>
+
+              <div class="comparison1">
+                <div class="compare" style="margin-top: 0% !important;">
+                        <strong style="font-size: x-large;
+                                      color: #e74c3c !important;
+                                      ">INDULGENCE</strong>
+                </div>
+                  <div class="hexagon" style="display: grid; grid-template-columns: 1fr 5fr 1fr; ">
+          <div>
+            <button class="button-89" role="button"><b style="color:#e74c3c !important;">USA</b></button>
+          </div>    
+          <div style="color:#fa8321 !important; margin-left:-5%">
+            Indulgence index goes down while moving from USA to South Korea.
+            It indicates the potential challenge of differences 
+             in work-life balance and social norms. To succeed in the market, 
+             Incredible Eats will customize products taking into account the local values, promote 
+             a more balanced work environment, and ensure that the business practices align with South
+              Korean cultural expectations regarding restraint and social norms.
+          </div>      
+          <div>
+            <button class="button-891" role="button"><b style="color:#5796f4 !important;">South Korea</b></button>
+          
+          </div>
+                      </div>
+                </div>
+  </div>
 </div>
 
 <script>
-  $(document).ready(function() {
-    function startAnimationIfVisible() {
-      $('.bar').each(function(i) {
-        var $bar = $(this);
-        if (isElementInViewport($bar[0]) && !$bar.data('animation-started')) {
-          $bar.data('animation-started', true);
-          $bar.append('<span class="count">0%</span>');
-          setTimeout(function() {
-            $bar.css('width', $bar.attr('data-percent'));
-          }, i * 100);
+    $(document).ready(function () {
+        function startAnimationIfVisible() {
+            $('.bar').each(function (i) {
+                var $bar = $(this);
+                if (isElementInViewport($bar[0]) && ! $bar.data('animation-started')) {
+                    $bar.data('animation-started', true);
+                    $bar.append('<span class="count">0%</span>');
+                    setTimeout(function () {
+                        $bar.css('width', $bar.attr('data-percent'));
+                    }, i * 100);
+                }
+            });
+
+            $('.count').each(function () {
+                var $count = $(this);
+                var $bar = $count.closest('.bar');
+                if (isElementInViewport($bar[0]) && ! $bar.data('count-animation-started')) {
+                    $bar.data('count-animation-started', true);
+                    $count.prop('Counter', 0).animate({
+                        Counter: $bar.attr('data-percent')
+                    }, {
+                        duration: 500,
+                        easing: 'swing',
+                        step: function (now) {
+                            $count.text(Math.ceil(now) + '%');
+                        }
+                    });
+                }
+            });
         }
-      });
-  
-      $('.count').each(function() {
-        var $count = $(this);
-        var $bar = $count.closest('.bar');
-        if (isElementInViewport($bar[0]) && !$bar.data('count-animation-started')) {
-          $bar.data('count-animation-started', true);
-          $count.prop('Counter', 0).animate({
-            Counter: $bar.attr('data-percent')
-          }, {
-            duration: 500,
-            easing: 'swing',
-            step: function(now) {
-              $count.text(Math.ceil(now) + '%');
-            }
-          });
+
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return(rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth));
         }
-      });
-    }
-  
-    function isElementInViewport(el) {
-      var rect = el.getBoundingClientRect();
-      return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-    }
-  
-    startAnimationIfVisible();
-    $(window).on('scroll', startAnimationIfVisible);
-  });
-  
-  
-</script>
-{% endblock %}
+
+        startAnimationIfVisible();
+        $(window).on('scroll', startAnimationIfVisible);
+    });
+</script>{% endblock %}

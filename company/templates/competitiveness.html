@@ -1,0 +1,507 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+  <style>
+    h2 {
+      margin: 5%;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 100;
+    }
+    
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      margin: 20px auto;
+      position: relative;
+    }
+    
+    .timeline__event {
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      margin: 20px 0;
+      border-radius: 6px;
+      align-self: center;
+      width: 45vw;
+    }
+    
+    .timeline__event:nth-child(2n + 1) {
+      flex-direction: row-reverse;
+    }
+    
+    .timeline__event:nth-child(2n + 1) .timeline__event__date {
+      border-radius: 0 6px 6px 0;
+    }
+    
+    .timeline__event:nth-child(2n + 1) .timeline__event__content {
+      border-radius: 6px 0 0 6px;
+    }
+    
+    .timeline__event:nth-child(2n + 1) .timeline__event__icon:before {
+      content: '';
+      width: 2px;
+      height: 115%;
+      background: #aff1b6;
+      position: absolute;
+      top: 0%;
+      left: 50%;
+      right: auto;
+      z-index: -1;
+      transform: translateX(-50%);
+      animation: fillTop 1s forwards 4s ease-in-out;
+    }
+    
+    .timeline__event:nth-child(2n + 1) .timeline__event__icon:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #aff1b6;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+      top: 50%;
+      left: auto;
+      transform: translateY(-50%);
+      animation: fillLeft 1s forwards 4s ease-in-out;
+    }
+    
+    .timeline__event__title {
+      font-size: 1.2rem;
+      line-height: 1.4;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #555ac0;
+      letter-spacing: 1.5px;
+    }
+    
+    .timeline__event__content {
+      padding: 20px;
+      box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+      background: #fff;
+      width: calc(31vw - 84px);
+      border-radius: 0 6px 6px 0;
+    }
+    
+    .timeline__event__date {
+      color: #87bbfe;
+      font-size: 1.25rem;
+      font-weight: 600;
+      background: #555ac0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      padding: 0 20px;
+      border-radius: 6px 0 0 6px;
+    }
+    
+    .timeline__event__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555ac0;
+      padding: 20px;
+      align-self: center;
+      margin: 0 20px;
+      background: #87bbfe;
+      border-radius: 100%;
+      width: 40px;
+      box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+      padding: 40px;
+      height: 40px;
+      position: relative;
+    }
+    
+    .timeline__event__icon i {
+      font-size: 32px;
+    }
+    
+    .timeline__event__icon:before {
+      content: '';
+      width: 2px;
+      height: 115%;
+      background: #87bbfe;
+      position: absolute;
+      top: 0%;
+      z-index: -1;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fillTop 1s forwards 4s ease-in-out;
+    }
+    
+    
+    .timeline__event__icon:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: #87bbfe;
+      position: absolute;
+      left: 0%;
+      z-index: -1;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: fillLeftOdd 1s forwards 4s ease-in-out;
+    }
+    
+    .timeline__event__description {
+      flex-basis: 60%;
+    }
+    
+    .timeline__event--type2:after {
+      background: #24b47e;
+    }
+    
+    .timeline__event--type2 .timeline__event__date {
+      color: #aff1b6;
+      background: #24b47e;
+    }
+    
+    .timeline__event--type2 .timeline__event__icon {
+      background: #aff1b6;
+      color: #24b47e;
+    }
+    
+    .timeline__event--type2 .timeline__event__icon:before,
+    .timeline__event--type2 .timeline__event__icon:after {
+      background: #aff1b6;
+    }
+    
+    .timeline__event--type2 .timeline__event__title {
+      color: #24b47e;
+    }
+    
+    .timeline__event--type3:after {
+      background: #555ac0;
+    }
+    
+    .timeline__event--type3 .timeline__event__date {
+      background-color: #555ac0 !important;
+    }
+    
+    .timeline__event--type3 .timeline__event__icon {
+      background: #87bbfe !important;
+      color: #555ac0 !important;
+    }
+    
+    .timeline__event--type3 .timeline__event__icon:before,
+    .timeline__event--type3 .timeline__event__icon:after {
+      background: #87bbfe !important;
+    }
+    
+    .timeline__event--type3 .timeline__event__title {
+      color: #555ac0;
+    }
+    
+    .timeline__event:last-child .timeline__event__icon:before {
+      content: none;
+    }
+    
+    @media (max-width: 786px) {
+      .timeline__event {
+        flex-direction: column;
+        align-self: center;
+      }
+    
+      .timeline__event__content {
+        width: 100%;
+      }
+    
+      .timeline__event__icon {
+        border-radius: 6px 6px 0 0;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+      }
+    
+      .timeline__event__icon:before,
+      .timeline__event__icon:after {
+        display: none;
+      }
+    
+      .timeline__event__date {
+        border-radius: 0;
+        padding: 20px;
+      }
+    
+      .timeline__event:nth-child(2n + 1) {
+        flex-direction: column;
+        align-self: center;
+      }
+    
+      .timeline__event:nth-child(2n + 1) .timeline__event__date {
+        border-radius: 0;
+        padding: 20px;
+      }
+    
+      .timeline__event:nth-child(2n + 1) .timeline__event__icon {
+        border-radius: 6px 6px 0 0;
+        margin: 0;
+      }
+    }
+    
+    @keyframes fillLeft {
+      100% {
+        right: 100%;
+      }
+    }
+    
+    @keyframes fillTop {
+      100% {
+        top: 100%;
+      }
+    }
+    
+    @keyframes fillLeftOdd {
+      100% {
+        left: 100%;
+      }
+    }
+    
+    #flag { 
+        width: 75px; height: 49.5px; background: #555ac0; position: relative;
+        margin-left: 35px;
+        color: white;
+        line-height: 50px;
+        text-align: center;
+      }
+      
+      #flag:before { 
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        left: -20px;
+        width: 0; 
+        height: 0; 
+        border-top: 25px solid #555ac0; 
+        border-bottom: 25px solid #555ac0; 
+        border-left: 20px solid transparent;
+      
+      }
+      
+      #flag:after { 
+        content: ""; 
+        position: absolute; 
+        left: 75px; 
+        bottom: 0; 
+        width: 0; 
+        height: 0; 
+        border-top: 25px solid transparent;
+      
+        border-bottom: 25px solid transparent;
+      
+        border-left: 35px solid #555ac0;
+      }
+
+
+      #flag1 { 
+        width: 75px; height: 49.5px; background: #24b47e; position: relative;
+        margin-left: 35px;
+        color: white;
+        line-height: 50px;
+        text-align: center;
+      }
+      
+      #flag1:before { 
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        left: -20px;
+        width: 0; 
+        height: 0; 
+        border-top: 25px solid #24b47e; 
+        border-bottom: 25px solid #24b47e; 
+        border-left: 20px solid transparent;
+      
+      }
+      
+      #flag1:after { 
+        content: ""; 
+        position: absolute; 
+        left: 75px; 
+        bottom: 0; 
+        width: 0; 
+        height: 0; 
+        border-top: 25px solid transparent;
+      
+        border-bottom: 25px solid transparent;
+      
+        border-left: 35px solid #24b47e;
+      }
+  </style>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr;">
+    <div class="timeline" style="margin-right: 5%;">
+      <p style="text-align: center; margin-top: 15%;">
+        <strong style="color:#fa8321 !important; font-size:xx-large; ">RESOURCES</strong>
+      </p>
+      <div class="timeline__event animated fadeInUp timeline__event--type1">
+        <div class="timeline__event__icon">
+          <img src="{% static 'cutlery.png' %}"/>
+        </div>
+        <div class="timeline__event__date">Plastic <br>
+            Negative <br>and<br>Carbon<br>Negative
+
+        </div>
+        <div class="timeline__event__content">
+          <div class="timeline__event__description">
+            <p style="color: black !important;">The company offset 200% of the carbon and plastic that is used to move 
+                products from the kitchen into the home. 
+                100% biodegradable cutlery helps clean the earth.</p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline__event animated fadeInUp delay-1s timeline__event--type2">
+        <div class="timeline__event__icon">
+            <img src="{% static 'machinery.png' %}"/>
+        </div>
+        <div class="timeline__event__date">Scalability</div>
+        <div class="timeline__event__content">
+          <div class="timeline__event__description">
+            <p style="color:black !important;">The company's ability to scale allows it
+                 to efficiently increase production capacity, meet growing demand, 
+                 and capture new market opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline__event animated fadeInUp delay-2s timeline__event--type3">
+        <div class="timeline__event__icon">
+            <img src="{% static 'marketing.png' %}"/>
+        </div>
+        <div class="timeline__event__date">Branding<br>and<br>Goodwill</div>
+        <div class="timeline__event__content">
+          <div class="timeline__event__description">
+            <p style="color:black !important;">The company has a strong and authentic brand image 
+                impacting brand credibility, fostering genuine connections with the audience, 
+                and promoting a positive reputation.
+            </p>
+           </div>
+        </div>
+      </div>
+      <div class="timeline__event animated fadeInUp delay-3s timeline__event--type2">
+        <div class="timeline__event__icon">
+            <img src="{% static 'technology.png' %}"/>
+        </div>
+        <div class="timeline__event__date">Tensile<br>Strength<br>Technology</div>
+        <div class="timeline__event__content">
+          <div class="timeline__event__description">
+            <p style="color: black !important;">
+                The company possesses a distinctive tensile strength technology 
+                that leverages engineering expertise to precisely measure pressure 
+                and compression, resulting in the creation of perfectly hard 
+                and finely crafted cutlery.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline" style="margin-right: 5%;">
+        <p style="text-align: center; margin-top: 15%;">
+          <strong style="color:#fa8321 !important; font-size:xx-large; ">CAPABILITIES</strong>
+        </p>
+        <div class="timeline__event animated fadeInUp timeline__event--type1">
+          <div class="timeline__event__icon">
+            <img src="{% static 'cutlery.png' %}"/>
+          </div>
+          <div class="timeline__event__date">Impact</div>
+          <div class="timeline__event__content">
+            <div class="timeline__event__description">
+              <p style="color: black !important; font-size: 0.9em;">The company is a distinct competence in environmental
+                 sustainability. The company is capable of attracting environmentally-conscious customers,
+                  and reducing costs associated with waste management. 
+                Incredible Eats has become a part of Impact Collective.</p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline__event animated fadeInUp delay-1s timeline__event--type2">
+          <div class="timeline__event__icon">
+              <img src="{% static 'machinery.png' %}"/>
+          </div>
+          <div class="timeline__event__date">Mass<br>produce<br>machinery</div>
+          <div class="timeline__event__content">
+            <div class="timeline__event__description">
+              <p style="color:black !important;">Incredible eats is the first company to mass-produce edible cutlery in America. 
+                  The company can produce 1000s of spoons in time when other companies can produce 100 only.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="timeline__event animated fadeInUp delay-2s timeline__event--type3">
+          <div class="timeline__event__icon">
+              <img src="{% static 'marketing.png' %}"/>
+          </div>
+          <div class="timeline__event__date">Organic<br>Reach</div>
+          <div class="timeline__event__content">
+            <div class="timeline__event__description">
+              <p style="color:black !important;">The company has allocated minimal resources to marketing, 
+                  with the majority of its promotional efforts being organic, 
+                  driven by word-of-mouth, due to the exceptional quality of its products.
+              </p>
+             </div>
+          </div>
+        </div>
+        <div class="timeline__event animated fadeInUp delay-3s timeline__event--type2">
+          <div class="timeline__event__icon">
+              <img src="{% static 'technology.png' %}"/>
+          </div>
+          <div class="timeline__event__date">Sustained<br>Competitive<br>Advantage</div>
+          <div class="timeline__event__content">
+            <div class="timeline__event__description">
+              <p style="color: black !important;">
+                The company has a competitive edge in the market. 
+                The technological advantage allows the company to produce high-quality cutlery with precision, 
+                setting it apart from competitors by offering superior products.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%;">
+    <div style="color:#555ac0 !important; margin-top:20%;">USA</div>
+    <div id="flag">This is it!</div>
+
+    <div id="flag">This is it!</div>
+
+    <div id="flag">This is it!</div>
+
+    <div id="flag">This is it!</div>
+
+    <div id="flag">This is it!</div>
+
+    <div id="flag">This is it!</div>
+
+</div>
+
+
+<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin-left: 7%;">
+    <div></div>
+    <div style="color:#fa8321 !important; font-size: large;">Raw Material</div>
+    <div style="color:#fa8321 !important; font-size: large;">Design, R&D</div>
+  <div style="color:#fa8321 !important; font-size: large;">Production</div>
+  <div style="color:#fa8321 !important; font-size: large;">Packaging</div>
+  <div style="color:#fa8321 !important; font-size: large;">Marketing</div>
+  <div style="color:#fa8321 !important; font-size: large;">Retail</div>
+
+</div>
+
+<div style="display: grid; grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr; margin:5%;">
+    <div style="color:#24b47e !important; margin-top:20%;">South Korea</div>
+    <div id="flag1" style="display: flex; justify-content: center;">This is it!</div>
+
+    <div id="flag1">This is it!</div>
+
+    <div id="flag1">This is it!</div>
+
+    <div id="flag1">This is it!</div>
+
+    <div id="flag1">This is it!</div>
+
+    <div id="flag1">This is it!</div>
+
+</div>
+
+{% endblock %}

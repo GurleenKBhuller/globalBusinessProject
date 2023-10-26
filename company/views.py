@@ -8,3 +8,6 @@ def pestle_view(request):
 
 def hofsted_view(request):
     return render(request, 'hofsted.html')
+
+def competitive_view(request):
+    return render(request, 'competitiveness.html')
