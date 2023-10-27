@@ -6,5 +6,6 @@ urlpatterns = [
     path("", home, name="index"),
     path('pestle/', pestle_view, name='pestle_view'),
     path('hofsted/', hofsted_view, name='hofsted_view'),
-    path('competitiveness/', competitive_view, name="competitive_view")
+    path('competitiveness/', competitive_view, name="competitive_view"),
+    path('entry/', entry_view, name="entry_view"),
 ]

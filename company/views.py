@@ -11,3 +11,6 @@ def hofsted_view(request):
 
 def competitive_view(request):
     return render(request, 'competitiveness.html')
+
+def entry_view(request):
+    return render(request, 'entry.html')

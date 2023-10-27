@@ -119,6 +119,9 @@
               <li class="nav-item">
                 <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'competitive_view' %}nav-link-active{% endif %}" href="{% url 'competitive_view' %}">Competitiveness</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'entry_view' %}nav-link-active{% endif %}" href="{% url 'entry_view' %}">Entry Strategy Structure</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -166,7 +169,7 @@
       <li class="li"><a href="{% url 'pestle_view' %}">PESTLE Analysis</a></li>
       <li class="li"><a href="{% url 'hofsted_view' %}">Hofsted Analysis</a></li>
       <li class="li"><a href="{% url 'competitive_view' %}">Competitiveness Analysis</a></li>
-      <li class="li">About</li>
+      <li class="li"><a href="{% url 'entry_view' %}">Entry Strategy Structure</a></li>
       <li class="li">About</li>
     </ul>
   </div>

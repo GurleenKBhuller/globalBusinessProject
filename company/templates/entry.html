@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% load static %}
+  <style>
+    .ag-format-container {
+        width: 1142px;
+        margin: 0 auto;
+      }
+      .ag-courses_box {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        justify-content: center
+        -ms-flex-align: start;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+      
+        padding: 50px 0;
+      }
+      .ag-courses_item {
+        width: 100% !important;
+        margin: 0 15px 30px;
+      
+        overflow: hidden;
+      
+        border-radius: 28px;
+      }
+      .ag-courses-item_link {
+        display: block;
+        padding: 30px 20px;
+        background-color: #121212;
+      
+        overflow: hidden;
+      
+        position: relative;
+      }
+      .ag-courses-item_link:hover,
+      .ag-courses-item_link:hover .ag-courses-item_date {
+        text-decoration: none;
+        color: #FFF;
+      }
+      .ag-courses-item_link:hover .ag-courses-item_bg {
+        -webkit-transform: scale(15);
+        -ms-transform: scale(15);
+        transform: scale(15);
+      }
+      .ag-courses-item_title {
+      overflow: hidden;
+       color: #FFF;
+        z-index: 2;
+        position: relative;
+      }
+      .ag-courses-item_date-box {
+        font-size: 18px;
+        color: #FFF;
+      
+        z-index: 2;
+        position: relative;
+      }
+
+      .ag-courses-item_bg {
+        height: 128px;
+        width: 128px;
+        background-color: #f9b234;
+      
+        z-index: 1;
+        position: absolute;
+        top: -75px;
+        right: -75px;
+      
+        border-radius: 50%;
+      
+        -webkit-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+      }  
+      
+      
+      @media only screen and (max-width: 979px) {
+        .ag-courses_item {
+          -ms-flex-preferred-size: calc(50% - 30px);
+          flex-basis: calc(50% - 30px);
+        }
+        .ag-courses-item_title {
+          font-size: 24px;
+        }
+      }
+      
+      @media only screen and (max-width: 767px) {
+        .ag-format-container {
+          width: 96%;
+        }
+      
+      }
+      @media only screen and (max-width: 639px) {
+        .ag-courses_item {
+          -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+        }
+        .ag-courses-item_title {
+          min-height: 72px;
+          line-height: 1;
+      
+          font-size: 24px;
+        }
+        .ag-courses-item_link {
+          padding: 22px 40px;
+        }
+        .ag-courses-item_date-box {
+          font-size: 16px;
+        }
+      }
+  </style>
+  <div class="ag-format-container" style="display: grid; grid-template-columns: 1fr 0.25fr 2fr; margin-top:5%">
+      <div class="ag-courses_box">
+        <div class="ag-courses_item">
+          <a href="#" class="ag-courses-item_link">
+            <div class="ag-courses-item_bg"></div>
+
+            <div class="ag-courses-item_title" style="font-size: x-large !important">
+                ENTRY STRATEGY is EXPORTING first and then later on 
+                WHOLLY OWNED SUBSIDIARY.
+            </div>
+
+          </a>
+        </div>
+      </div>
+      <div style="display: flex; align-items:center; justify-content: center;">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#f9b234" class="bi bi-arrow-right" viewBox="0 0 16 16" style="margin-left: 5%;">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+              </svg>
+        </div>
+      </div>
+        <div class="ag-courses_box">
+          <div class="ag-courses_item">
+            <a href="#" class="ag-courses-item_link">
+              <div class="ag-courses-item_bg" style="background-color: #6495ED !important"></div>
+  
+              <div class="ag-courses-item_title" style="font-size: medium;">
+                The company's initial market entry strategy is centered around exports.
+                Our partner, Dippin' Dots will serve as the vehicle through which the 
+                company's products will be distributed and sold in the target market.
+                Dippin' Dots  is selling through about 2000 Conveneince stores 
+                such as 7 Eleven, Buy the Way, etc., 490 Supermarkets, some of which are Lotte Super,
+                 E-Mart, GS Super, etc; and 120 local retailers and restaurants.
+                 <br>
+                 This initial phase of market entry through export will serve
+                  as a means of testing the waters and gaining a foothold in the new market. 
+                  It will allows Incredible Eats to leverage Dippin' Dots' existing distribution
+                   network and brand recognition to make the
+                  products available to a wide range of potential customers.
+                  <br>
+                  The company's long-term strategy involves evolving beyond this export-oriented
+                   approach. In the future, we intend to transition to a "Wholly Owned Subsidiary" model. 
+                   The company plans to establish its own presence and infrastructure within the target market
+                   after taking and working on the feedback of customers and customizing according to the
+                   local flavors. 
+            </div>
+  
+            </a>
+          </div>
+        </div>
+  </div>
+
+
+
+  <div class="ag-format-container" style="display: grid; grid-template-columns: 2fr 0.25fr 1fr;">
+    <div class="ag-courses_box">
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link">
+          <div class="ag-courses-item_bg" style="background-color:#6495ED !important"></div>
+
+          <div class="ag-courses-item_title"  style="font-size: medium;">
+            Transnational Strategy involves adapting the edible spoons, chopsticks and forks to South Korean tastes,
+             while maintaining a consistent global brand.
+            The taste needs to establish a local presence, so the 
+             products will be customized for the South Korean market, 
+             and the universal messaging will be combined with local flavors. 
+             This approach allows for global recognition while addressing the 
+             specific needs and cultural nuances of the South Korean market.
+             <br>
+             At first, Incredible Eats will be sending out its products which are customized
+             according to South Korean flavors found out through market research. Then, on
+             getting user feedback and with the help of partners in South Korea, such as Dippin'
+              Dots, the company will keep customizing. Once Incredible Eats switches from Export to
+              Wholly Owned Subsidiary model, it will employ a mix of USA and South Korean workers 
+              to help cater to locals there.
+          </div>
+
+        </a>
+      </div>
+    </div>
+    <div style="display: flex; align-items:center; justify-content: center;">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#6495ED" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-left: 5%; margin-top:-10%">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+          </svg>
+      </div>
+    </div>
+      <div class="ag-courses_box">
+        <div class="ag-courses_item">
+          <a href="#" class="ag-courses-item_link">
+            <div class="ag-courses-item_bg"></div>
+
+            <div class="ag-courses-item_title" style="font-size: x-large !important">
+                ENTRY STRUCTURE chosen by Incredible Eats is TRANSNATIONAL.
+          </div>
+
+          </a>
+        </div>
+      </div>
+</div>
+{% endblock %}
