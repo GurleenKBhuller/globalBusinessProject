@@ -9,4 +9,5 @@ urlpatterns = [
     path('competitiveness/', competitive_view, name="competitive_view"),
     path('entry/', entry_view, name="entry_view"),
      path('citations/', citations_view, name="citations"),
+     path('goingglobal/', goingglobal, name="goingglobal")
 ]

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .card{
+        margin:5% !important;
+    }
+    .card-img-top{
+        border: 2px solid white;
+        margin-bottom: 5px;
+        height: 35%;
+    }
+</style>
+<p style="margin-top:6%; margin-left: 2%;">
+    <strong style="color:#fa8321 !important; font-size:xx-large; ">
+        LET'S TAKE INCREDIBLE EATS GLOBAL
+    </strong> </p>
+<div style="display:grid; grid-template-columns: 1fr 1fr 1fr;">
+      <div class="card" style="background: #9999FF;">
+        <div class="card-body">
+            <img class="card-img-top" src="{% static 'finalie.jpg' %}" alt="Incredible Eats">
+          <h5 class="card-title">Incredible Eats</h5>
+          <p class="card-text"> IncrEDIBLE Eats was founded to create the world's first mass-manufacturable and entirely edible cutlery, offering an incredible solution to the plastic problem around the world.
+            </p>
+        </div>
+    </div>
+      <div class="card" style="background:#FF6666;">
+        <div class="card-body">
+            <img class="card-img-top" src="{% static 'finalustokorea.jpg' %}" alt="Incredible Eats">
+          <h5 class="card-title">Going Global, Korea First</h5>
+          <p class="card-text">
+            Incredible Eats chose South Korea for global expansion due to its alignment 
+            with local environmental concerns, legislation against single-use plastics, 
+            consumer interest, and a growing demand for eco-friendly alternatives.
+        </p>
+        </div>
+    </div>
+    <div class="card" style="background: #FF66CC;">
+        <div class="card-body">
+            <img class="card-img-top" src="{% static 'finallb.jpg' %}" alt="Incredible Eats">
+          <h5 class="card-title">Greatest Challenge, Language</h5>
+          <p class="card-text">
+            Incredible Eats has a language barrier ahead of it in Korea. 
+            To mitigate it, we'll employ a mix of Koreans, Americans and bilinguils in the team, and 
+            the USA team also learn Korean phrases.
+        </p>
+        </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr 1fr;">
+    <div class="card" style="background: #FF66CC;">
+      <div class="card-body">
+        <img class="card-img-top" src="{% static 'finalexport.webp' %}" alt="Incredible Eats">
+        <h5 class="card-title">Exports, and then Wholly Owned Subsidiary</h5>
+        <p class="card-text">
+            Incredible Eats will first export its cutlery to South Korea as USA and Korea has a free-trade agreement. 
+            Our partner, Dippin' Dots' distribution network will be used at first there.
+            The company will keep customizing the cutlery according to Korean market, and later on will switch to a
+            Wholly Owned Subsidiary model in South Korea.
+        </p>
+      </div>
+  </div>
+    <div class="card" style="background:#FF6666;">
+      <div class="card-body">
+        <img class="card-img-top" src="{% static 'finaltrans.jpeg' %}" alt="Incredible Eats">
+        <h5 class="card-title">Transnational Strategy for the Team</h5>
+        <p class="card-text">
+            The company is going to employ a mix of USA, South Koreans and even people from other countries. 
+            We want to train the team about different practices - business and cultural, so that everyone can 
+            respect each other and the company can grow.
+        </p>
+      </div>
+  </div>
+  <div class="card" style="background: #9999FF;">
+      <div class="card-body">
+        <img class="card-img-top" src="{% static 'finalfunc.png' %}" alt="Incredible Eats">
+        <h5 class="card-title">Customization of Functional Elements</h5>
+        <p class="card-text">
+            We expect a higher profit in the Korean market than the USA itself as there is less competition and 
+            people are conscious about the environment. The company will customize and keep updating its technology, 
+            HR policies, flavors and designs, and prices as we learn about what is suitable and seen with excitement 
+            in the Korean market.
+        </p>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

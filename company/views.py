@@ -17,3 +17,6 @@ def entry_view(request):
 
 def citations_view(request):
     return render(request, 'citations.html')
+
+def goingglobal(request):
+    return render(request, 'goingglobal.html')
