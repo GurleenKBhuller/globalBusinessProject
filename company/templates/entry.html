@@ -1,309 +1,309 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
+  {% load static %}
   <style>
     .ag-format-container {
-        width: 1142px;
-        margin: 0 auto;
-      }
-      .ag-courses_box {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        -ms-flex-align: start;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        padding: 50px 0;
-      }
-      .ag-courses_item {
-        width: 100% !important;
-        margin: 0 15px 30px;
-        overflow: hidden;
-        border-radius: 28px;
-      }
-      .ag-courses-item_link {
-        display: block;
-        padding: 30px 20px;
-        background-color: #121212;
-        overflow: hidden;
-        position: relative;
-      }
-      .ag-courses-item_link:hover,
-      .ag-courses-item_link:hover .ag-courses-item_date {
-        text-decoration: none;
-        color: #FFF;
-      }
-      .ag-courses-item_link:hover .ag-courses-item_bg {
-        -webkit-transform: scale(15);
-        -ms-transform: scale(15);
-        transform: scale(15);
-      }
-      .ag-courses-item_title 
-      {
+      width: 1142px;
+      margin: 0 auto;
+    }
+    .ag-courses_box {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -ms-flex-align: start;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 50px 0;
+    }
+    .ag-courses_item {
+      width: 100% !important;
+      margin: 0 15px 30px;
       overflow: hidden;
-      color: #FFF;
+      border-radius: 28px;
+    }
+    .ag-courses-item_link {
+      display: block;
+      padding: 30px 20px;
+      background-color: #121212;
+      overflow: hidden;
+      position: relative;
+    }
+    .ag-courses-item_link:hover,
+    .ag-courses-item_link:hover .ag-courses-item_date {
+      text-decoration: none;
+      color: #fff;
+    }
+    .ag-courses-item_link:hover .ag-courses-item_bg {
+      -webkit-transform: scale(15);
+      -ms-transform: scale(15);
+      transform: scale(15);
+    }
+    .ag-courses-item_title {
+      overflow: hidden;
+      color: #fff;
       z-index: 2;
       position: relative;
+    }
+    .ag-courses-item_date-box {
+      font-size: 18px;
+      color: #fff;
+      z-index: 2;
+      position: relative;
+    }
+    .ag-courses-item_bg {
+      height: 128px;
+      width: 128px;
+      background-color: #f9b234;
+      z-index: 1;
+      position: absolute;
+      top: -75px;
+      right: -75px;
+      border-radius: 50%;
+      -webkit-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+    @media only screen and (max-width: 979px) {
+      .ag-courses_item {
+        -ms-flex-preferred-size: calc(50% - 30px);
+        flex-basis: calc(50% - 30px);
+      }
+      .ag-courses-item_title {
+        font-size: 24px;
+      }
+    }
+    
+    @media only screen and (max-width: 767px) {
+      .ag-format-container {
+        width: 96%;
+      }
+    }
+    @media only screen and (max-width: 639px) {
+      .ag-courses_item {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+      }
+      .ag-courses-item_title {
+        min-height: 72px;
+        line-height: 1;
+    
+        font-size: 24px;
+      }
+      .ag-courses-item_link {
+        padding: 22px 40px;
       }
       .ag-courses-item_date-box {
-        font-size: 18px;
-        color: #FFF;
-        z-index: 2;
-        position: relative;
+        font-size: 16px;
       }
-      .ag-courses-item_bg {
-        height: 128px;
-        width: 128px;
-        background-color: #f9b234;
-        z-index: 1;
-        position: absolute;
-        top: -75px;
-        right: -75px;
-        border-radius: 50%;
-        -webkit-transition: all .5s ease;
-        -o-transition: all .5s ease;
-        transition: all .5s ease;
-      }    
-      @media only screen and (max-width: 979px) {
-        .ag-courses_item {
-          -ms-flex-preferred-size: calc(50% - 30px);
-          flex-basis: calc(50% - 30px);
-        }
-        .ag-courses-item_title {
-          font-size: 24px;
-        }
-      }
-      
-      @media only screen and (max-width: 767px) {
-        .ag-format-container {
-          width: 96%;
-        }
-      
-      }
-      @media only screen and (max-width: 639px) {
-        .ag-courses_item {
-          -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-        }
-        .ag-courses-item_title {
-          min-height: 72px;
-          line-height: 1;
-      
-          font-size: 24px;
-        }
-        .ag-courses-item_link {
-          padding: 22px 40px;
-        }
-        .ag-courses-item_date-box {
-          font-size: 16px;
-        }
-      }
-      h1 {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        font-weight: 300;
-        font-size: x-large;
-        color:#fd7e14 !important;
-        -webkit-transition: all 0.4s ease 0s;
-        -o-transition: all 0.4s ease 0s;
-        transition: all 0.4s ease 0s;
-      }
-      h1 span {
-        display: block;
-        font-size: 0.5em;
-        line-height: 1.3;
-      }
-      h1 em {
-        font-style: normal;
-        font-weight: 600;
-      }
-      .functionalheader h1 {
-        text-align: center;
-            font-size:30px; 
-            font-weight:300; 
-            color:#222; 
-            letter-spacing:1px;
-            text-transform: uppercase;
-            display: grid;
-            grid-template-columns: 1fr max-content 1fr;
-            grid-template-rows: 27px 0;
-            grid-gap: 20px;
-            align-items: center;
-        } 
-        .functionalheader h1:after,.functionalheader h1:before {
-            content: " ";
-            display: block;
-            border-bottom: 1px solid black;
-            border-top: 1px solid black;
-            height: 5px;
-        }  
-        
-        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Oswald:wght@500&display=swap');
-@import url('https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css');
-
-/* grid layout */
-ol, ol::before, ol::after, 
-ol *, ol *::before, ol *::after { margin: 0; padding: 0; box-sizing: border-box }
-ol { 
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem;
-  width: 95%;
-  margin-inline: auto;
-  padding-block: 1rem;
-  list-style: none;
-}
-
-/* card layout/styling */
-ol > li {
-  --card-background-color: #f0f0f0;
-  --card-text-color: #0F0F0F;
-  --card-border-radius: 0.5rem;
-  --card-padding-block: 1.5rem;
-  --card-padding-inline: 1rem;
-  
-  --outset-size: 0.75rem;
-  --outset-background-color: #e5e5e5;
-  
-  --number-font-size: 3rem;
-  --number-overlap: 0.5rem;
-  --number-font-family: 'Oswald', sans-serif;
-  --number-font-weight: 500;
-  
-  margin: var(--outset-size);
-  margin-top: calc(var(--number-font-size) - var(--number-overlap));
-  border-radius: var(--card-border-radius);
-  padding-block: var(--card-padding-block);
-  padding-inline: var(--card-padding-inline);
-  color: var(--card-text-color);
-  background-color: var(--card-background-color);
-  box-shadow: 
-    inset 1px 1px 0px rgb(255 255 255 / .5),
-    inset -1px -1px 0px rgb(0 0 0 / .25),
-    calc(var(--outset-size) * .25) calc(var(--outset-size) * .25) calc(var(--outset-size) * .5) rgb(0 0 0 / .25);
-  position: relative;
-  counter-increment: count;
-}
-
-ol > li::after{
-  position: absolute;  
-  bottom: calc(100% - var(--number-overlap));
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--accent-color);
-  font-size: xx-large;
-  line-height: 0.5;
-  z-index: 2;
-}
-ol > li::before{
-  content: "";
-  position: absolute;
-  width: calc(100% + (var(--outset-size) * 2));
-  height: 100%;
-  bottom: calc(var(--outset-size) * -1);
-  left: calc(var(--outset-size) * -1);
-  z-index: -1;
-  border-bottom-left-radius: calc(var(--card-border-radius) + var(--outset-size));
-  border-bottom-right-radius: calc(var(--card-border-radius) + var(--outset-size));
-  background-color: var(--outset-background-color);
-  background-image: 
-    linear-gradient(to left, var(--outset-background-color) calc(var(--outset-size) * 2), transparent 0),
-    linear-gradient(135deg, var(--accent-color) 80%, var(--outset-background-color) 0);    
-}
-.ols > li:nth-child(2)::after {
-  content: "USA"; 
-}
-.ols > li:nth-child(1)::after {
-  content: "South Korea"; 
-}
-
-ol > li:nth-child(1)::after {
-  content: "PRODUCTS"; 
-}
-ol > li:nth-child(2)::after {
-  content: "PRICING"; 
-}
-ol > li:nth-child(3)::after {
-  content: "PROMOTIONS"; 
-}
-ol > li:nth-child(4)::after {
-  content: "PLACE"; 
-}
-/* card content */
-h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  font-weight: normal
-}
-.icon{
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: calc(var(--card-padding-block) * .5);
-}
-.descr {
-  color: var(--accent-color) !important;
-  font-size: medium;
-}
-
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
-
-@mixin transition($transition-property, $transition-time, $method) {
-    -webkit-transition: $transition-property $transition-time $method;
-    -moz-transition: $transition-property $transition-time $method;
-    -ms-transition: $transition-property $transition-time $method;
-    -o-transition: $transition-property $transition-time $method;
-    transition: $transition-property $transition-time $method;
-}
-* {
-    box-sizing: border-box;
-}
-
-.holder {
-    width: 50%;
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -o-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-
-}
-
-.spantext {
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -o-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-body {
-    color: #333;
-    -webkit-font-smoothing: antialiased;
-    font-family: 'Montserrat', sans-serif;
-    padding: 2%;
-    overflow-y: hidden;
-
-}
-.wrap {
-    width: 50%;
-    margin-bottom: 10%;
-    margin-left: 40%;
-    margin-top: -15%;
-}
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.5em;
-    padding: 0.5em 0;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-ul {
-    li {
+    }
+    h1 {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      font-weight: 300;
+      font-size: x-large;
+      color: #fd7e14 !important;
+      -webkit-transition: all 0.4s ease 0s;
+      -o-transition: all 0.4s ease 0s;
+      transition: all 0.4s ease 0s;
+    }
+    h1 span {
+      display: block;
+      font-size: 0.5em;
+      line-height: 1.3;
+    }
+    h1 em {
+      font-style: normal;
+      font-weight: 600;
+    }
+    .functionalheader h1 {
+      text-align: center;
+      font-size: 30px;
+      font-weight: 300;
+      color: #222;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: grid;
+      grid-template-columns: 1fr max-content 1fr;
+      grid-template-rows: 27px 0;
+      grid-gap: 20px;
+      align-items: center;
+    }
+    .functionalheader h1:after,
+    .functionalheader h1:before {
+      content: ' ';
+      display: block;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      height: 5px;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Oswald:wght@500&display=swap');
+    @import url('https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css');
+    
+    /* grid layout */
+    ol,
+    ol::before,
+    ol::after,
+    ol *,
+    ol *::before,
+    ol *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    ol {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1rem;
+      width: 95%;
+      margin-inline: auto;
+      padding-block: 1rem;
+      list-style: none;
+    }
+    
+    /* card layout/styling */
+    ol > li {
+      --card-background-color: #f0f0f0;
+      --card-text-color: #0f0f0f;
+      --card-border-radius: 0.5rem;
+      --card-padding-block: 1.5rem;
+      --card-padding-inline: 1rem;
+    
+      --outset-size: 0.75rem;
+      --outset-background-color: #e5e5e5;
+    
+      --number-font-size: 3rem;
+      --number-overlap: 0.5rem;
+      --number-font-family: 'Oswald', sans-serif;
+      --number-font-weight: 500;
+    
+      margin: var(--outset-size);
+      margin-top: calc(var(--number-font-size) - var(--number-overlap));
+      border-radius: var(--card-border-radius);
+      padding-block: var(--card-padding-block);
+      padding-inline: var(--card-padding-inline);
+      color: var(--card-text-color);
+      background-color: var(--card-background-color);
+      box-shadow: inset 1px 1px 0px rgb(255 255 255 / 0.5), inset -1px -1px 0px rgb(0 0 0 / 0.25), calc(var(--outset-size) * 0.25) calc(var(--outset-size) * 0.25) calc(var(--outset-size) * 0.5) rgb(0 0 0 / 0.25);
+      position: relative;
+      counter-increment: count;
+    }
+    
+    ol > li::after {
+      position: absolute;
+      bottom: calc(100% - var(--number-overlap));
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--accent-color);
+      font-size: xx-large;
+      line-height: 0.5;
+      z-index: 2;
+    }
+    ol > li::before {
+      content: '';
+      position: absolute;
+      width: calc(100% + (var(--outset-size) * 2));
+      height: 100%;
+      bottom: calc(var(--outset-size) * -1);
+      left: calc(var(--outset-size) * -1);
+      z-index: -1;
+      border-bottom-left-radius: calc(var(--card-border-radius) + var(--outset-size));
+      border-bottom-right-radius: calc(var(--card-border-radius) + var(--outset-size));
+      background-color: var(--outset-background-color);
+      background-image: linear-gradient(to left, var(--outset-background-color) calc(var(--outset-size) * 2), transparent 0), linear-gradient(135deg, var(--accent-color) 80%, var(--outset-background-color) 0);
+    }
+    .ols > li:nth-child(2)::after {
+      content: 'USA';
+    }
+    .ols > li:nth-child(1)::after {
+      content: 'South Korea';
+    }
+    
+    ol > li:nth-child(1)::after {
+      content: 'PRODUCTS';
+    }
+    ol > li:nth-child(2)::after {
+      content: 'PRICING';
+    }
+    ol > li:nth-child(3)::after {
+      content: 'PROMOTIONS';
+    }
+    ol > li:nth-child(4)::after {
+      content: 'PLACE';
+    }
+    /* card content */
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      font-weight: normal;
+    }
+    .icon {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: calc(var(--card-padding-block) * 0.5);
+    }
+    .descr {
+      color: var(--accent-color) !important;
+      font-size: medium;
+    }
+    
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
+    
+    @mixin transition($transition-property, $transition-time, $method) {
+      -webkit-transition: $transition-property $transition-time $method;
+      -moz-transition: $transition-property $transition-time $method;
+      -ms-transition: $transition-property $transition-time $method;
+      -o-transition: $transition-property $transition-time $method;
+      transition: $transition-property $transition-time $method;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    
+    .holder {
+      width: 50%;
+      -webkit-transform: rotate(270deg);
+      -moz-transform: rotate(270deg);
+      -o-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
+    
+    .spantext {
+      -webkit-transform: rotate(270deg);
+      -moz-transform: rotate(270deg);
+      -o-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
+    
+    body {
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      font-family: 'Montserrat', sans-serif;
+      padding: 2%;
+      overflow-y: hidden;
+    }
+    .wrap {
+      width: 50%;
+      margin-bottom: 10%;
+      margin-left: 40%;
+      margin-top: -15%;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.5em;
+      padding: 0.5em 0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    ul {
+      li {
         line-height: 2;
         font-weight: bold;
         font-family: 'Montserrat', sans-serif;
@@ -311,24 +311,24 @@ ul {
         text-transform: uppercase;
         clear: both;
         &:before {
-            content: "\2023";
-            padding: 0 1em 0 0;
+          content: '\2023';
+          padding: 0 1em 0 0;
         }
+      }
     }
-}
-.bar {
-    background: #e74c3c;
-    width: 0;
-    margin: 0.25em 0;
-    color: #fff;
-    position: relative;
-    transition: width 2s, background 0.2s;
-    -webkit-transform: translate3d(0, 0, 0);
-    clear: both;
-    &:nth-of-type(2n) {
-        background: lighten(#e74c3c , 10%);
-    }
-    .label {
+    .bar {
+      background: #e74c3c;
+      width: 0;
+      margin: 0.25em 0;
+      color: #fff;
+      position: relative;
+      transition: width 2s, background 0.2s;
+      -webkit-transform: translate3d(0, 0, 0);
+      clear: both;
+      &:nth-of-type(2n) {
+        background: lighten(#e74c3c, 10%);
+      }
+      .label {
         font-size: 0.75em;
         padding: 1em;
         width: 4em;
@@ -337,74 +337,69 @@ ul {
         position: relative;
         z-index: 2;
         font-family: 'Montserrat', sans-serif;
-
+      }
     }
-}
-.count {
-    position: absolute;
-    right: 0.25em;
-    top: 0.75em;
-    padding: 0.15em;
-    font-size: 0.75em;
-    font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.compare {
-    border-bottom: 1px solid #fa8321;
-    margin-top: -5%;
-    text-align: center;
-    border-top: 1px solid #fa8321;
-
-}
-.button-891 {
-  --b: 3px;   /* border thickness */
-  --s: .45em; /* size of the corner */
-  --color: #0B456A;
-  
-  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
-  color: var(--color);
-  --_p: var(--s);
-  background:
-    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
-    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
-  transition: .3s linear, color 0s, background-color 0s;
-  outline: var(--b) solid #0000;
-  outline-offset: .6em;
-  font-size: 16px;
-
-  border: 0;
-
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-.footer {
-  margin: -3%;
-  overflow-y: hidden;
-}
-</style>
-<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-
-  <ul class="nav nav-pills" style="margin-top: 5%;">
-    <li class="nav-item">
-    <a class="nav-link" style="color:#0d6efd !important" href="#">Entering the global market&nbsp;&nbsp;&gt; </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" style="color:#0d6efd !important" href="#content1">Strategy for Entry</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" style="color:#0d6efd !important" href="#content2">Structure for Entry</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" style="color:#0d6efd !important" href="#content3">Functional Details</a>
-    </li>
-  </ul>
+    .count {
+      position: absolute;
+      right: 0.25em;
+      top: 0.75em;
+      padding: 0.15em;
+      font-size: 0.75em;
+      font-weight: bold;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .compare {
+      border-bottom: 1px solid #fa8321;
+      margin-top: -5%;
+      text-align: center;
+      border-top: 1px solid #fa8321;
+    }
+    .button-891 {
+      --b: 3px; /* border thickness */
+      --s: 0.45em; /* size of the corner */
+      --color: #0b456a;
+    
+      padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+      color: var(--color);
+      --_p: var(--s);
+      background: conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p)) calc(100% - var(--b) - 2 * var(--_p));
+      transition: 0.3s linear, color 0s, background-color 0s;
+      outline: var(--b) solid #0000;
+      outline-offset: 0.6em;
+      font-size: 16px;
+    
+      border: 0;
+    
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    .footer {
+      margin: -3%;
+      overflow-y: hidden;
+    }
+  </style>
+  <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
+    <ul class="nav nav-pills" style="margin-top: 5%;">
+      <li class="nav-item">
+        <a class="nav-link" style="color:#0d6efd !important" href="#">Entering the global market &gt;</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#0d6efd !important" href="#content1">Strategy for Entry</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#0d6efd !important" href="#content2">Structure for Entry</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#0d6efd !important" href="#content3">Functional Details</a>
+      </li>
+    </ul>
   </nav>
-<p id="content1">
-  <strong style="color:#fa8321 !important; font-size:xx-large; ">STRATEGY FOR ENTRY</strong>
-</p>
-<div class="ag-format-container" style="display: grid; grid-template-columns: 1fr 0.25fr 2fr; 
+  <p id="content1">
+    <strong style="color:#fa8321 !important; font-size:xx-large; ">STRATEGY FOR ENTRY</strong>
+  </p>
+  <div class="ag-format-container" style="display: grid; grid-template-columns: 1fr 0.25fr 2fr; 
 margin-top:1%">
     <div class="ag-courses_box">
       <div class="ag-courses_item">
@@ -455,25 +450,25 @@ margin-top:1%">
           </div>
         </a>
       </div>
-    </div>
-    <div style="display: flex; align-items:center; justify-content: center;">
-      <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#6495ED" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-left: 5%; margin-top:-10%">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-        </svg>
-      </div>
-    </div>
-    <div class="ag-courses_box">
-      <div class="ag-courses_item">
-        <a href="#" class="ag-courses-item_link">
-          <div class="ag-courses-item_bg"></div>
 
-          <div class="ag-courses-item_title" style="font-size: x-large !important">ENTRY STRUCTURE chosen by Incredible Eats is TRANSNATIONAL.</div>
-        </a>
+      <div style="display: flex; align-items:center; justify-content: center;">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#6495ED" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-left: 5%; margin-top:-10%">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+          </svg>
+        </div>
+      </div>
+      <div class="ag-courses_box">
+        <div class="ag-courses_item">
+          <a href="#" class="ag-courses-item_link">
+            <div class="ag-courses-item_bg"></div>
+
+            <div class="ag-courses-item_title" style="font-size: x-large !important">ENTRY STRUCTURE chosen by Incredible Eats is TRANSNATIONAL.</div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-
   <!-- FUNCTIONAL -->
   <p id="content3">
     <strong style="color:#fa8321 !important; font-size:xx-large; ">FUNCTIONAL CONSIDERATIONS FOR ENTRY</strong>
@@ -481,356 +476,285 @@ margin-top:1%">
   <div class="functionalheader">
     <h1>MARKETING</h1>
   </div>
-  <p style="color: #fd7e14 !important;padding: 10px;">
-      Incredible Eats will tap into South Korea's eco-conscious culture, 
-      promoting edible cutlery as an eco-friendly and health-conscious alternative 
-      to plastics, and will seek support from local influencer collaborations and digital marketing.
-      </p>
+  <p style="color: #fd7e14 !important;padding: 10px;">Incredible Eats will tap into South Korea's eco-conscious culture, promoting edible cutlery as an eco-friendly and health-conscious alternative to plastics, and will seek support from local influencer collaborations and digital marketing.</p>
   <div>
     <ol>
       <li style="--accent-color: #50C878">
         <div class="icon">
-          <img src="{% static 'product.png' %}" style="height: 100%;width: 1.5em;"/>
+          <img src="{% static 'product.png' %}" style="height: 100%;width: 1.5em;" />
         </div>
         <div class="descr">
-          - The core product, edible cutlery will remain same.<br>
-          - Edible spoons, forks and chopsticks, and fully biodegradable packaging is the concept and USP of Incredible Eats.<br>
-          - South Koreans have different taste and flavor preferences than US citizens, so
-          new flavors and variations of  cutlery that are more appealing to the South Korean palate
-          will be introduced.<br>
-          - Spoons are a major portion of product range in USA, which will be switched to Chopsticks as being
-          the major portion.
-          </div>
+          - The core product, edible cutlery will remain same.<br />
+          - Edible spoons, forks and chopsticks, and fully biodegradable packaging is the concept and USP of Incredible Eats.<br />
+          - South Koreans have different taste and flavor preferences than US citizens, so new flavors and variations of cutlery that are more appealing to the South Korean palate will be introduced.<br />
+          - Spoons are a major portion of product range in USA, which will be switched to Chopsticks as being the major portion.
+        </div>
       </li>
       <li style="--accent-color: #008DC2">
         <div class="icon">
-          <img src="{% static 'pricing.png' %}" style="height: 100%;width: 1.5em;"></img>
+          <img src="{% static 'pricing.png' %}" style="height: 100%;width: 1.5em;" />
         </div>
         <div class="descr">
-          - The value of prices of spoons and chopsticks ranges from a few cents to
-          a few thousand dollars in Korean market, depending on the size, style and look.<br>
-          - Edible cutlery is a favorable concept for South Korea and there are no major
-          brands in this area.<br>
-          - Since South Koreans are very concerned about environment and health, they will
-          prefer eatable cutlery over plastic, and hence are willing to pay.<br>
-          - Also, low-price strategy is also not perceived to have additional 
-          value in the minds of Korean consumers (Walmart's case). So, the prices will be same.<br>
-          - These will later be changed after understanding consumer buying habits, frequency and
-           feedback.
+          - The value of prices of spoons and chopsticks ranges from a few cents to a few thousand dollars in Korean market, depending on the size, style and look.<br />
+          - Edible cutlery is a favorable concept for South Korea and there are no major brands in this area.<br />
+          - Since South Koreans are very concerned about environment and health, they will prefer eatable cutlery over plastic, and hence are willing to pay.<br />
+          - Also, low-price strategy is also not perceived to have additional value in the minds of Korean consumers (Walmart's case). So, the prices will be same.<br />
+          - These will later be changed after understanding consumer buying habits, frequency and feedback.
         </div>
       </li>
       <li style="--accent-color: #0B456A">
         <div class="icon">
-          <img src="{% static 'promotion.png' %}" style="height: 100%;width: 1.5em;"></img>
+          <img src="{% static 'promotion.png' %}" style="height: 100%;width: 1.5em;" />
         </div>
         <div class="descr">
-        - The brand's core values, mission, and USP will remain consistent.<br>
-        - The cutlery will be customized into a new  design and layout each year to keep up
-         with the changing attitudes of Korean consumers.<br>
-         - South Koreans are known to appreciate high-quality brands and are easily influenced
-          by social media, and popular culture. So, platforms like Naver, KakaoTalk, and Instagram
-           will be used for marketing digitally.<br>
-        - Incredible Eats will collaborate with local influencers or celebrities who can help
-        represent the brand as something familiar and promote the products to South Korean audience.<br>
-        - The company will participate in local and government events and festivals that align with our
-        no-plastic brand values where we will sample our products.
+          - The brand's core values, mission, and USP will remain consistent.<br />
+          - The cutlery will be customized into a new design and layout each year to keep up with the changing attitudes of Korean consumers.<br />
+          - South Koreans are known to appreciate high-quality brands and are easily influenced by social media, and popular culture. So, platforms like Naver, KakaoTalk, and Instagram will be used for marketing digitally.<br />
+          - Incredible Eats will collaborate with local influencers or celebrities who can help represent the brand as something familiar and promote the products to South Korean audience.<br />
+          - The company will participate in local and government events and festivals that align with our no-plastic brand values where we will sample our products.
         </div>
       </li>
       <li style="--accent-color: #ffc107">
         <div class="icon">
-          <img src="{% static 'place.png' %}" style="height: 100%;width: 1.5em;"></img>
+          <img src="{% static 'place.png' %}" style="height: 100%;width: 1.5em;" />
         </div>
         <div class="descr">
-          - Incredible Eats will create and maintain a strong online presence, 
-          with our own website's Korean version for South Korean market.<br>
-          - The partnership with Dippin' Dots will be helpful in initial distribution of 
-          the product to the customers, and later on, the company will establish more local 
-          partnerships.<br>
-          - Online commerce websites such as coupang.com, e-himart.co.kr, ssg.com, hmall.com, and gmarket.co.kr 
-          will be utilized to sell the products directly to consumers.
+          - Incredible Eats will create and maintain a strong online presence, with our own website's Korean version for South Korean market.<br />
+          - The partnership with Dippin' Dots will be helpful in initial distribution of the product to the customers, and later on, the company will establish more local partnerships.<br />
+          - Online commerce websites such as coupang.com, e-himart.co.kr, ssg.com, hmall.com, and gmarket.co.kr will be utilized to sell the products directly to consumers.
         </div>
       </li>
     </ol>
-</div>
-<div class="functionalheader" style="margin-top:4%">
-  <h1>DISTRIBUTION AND SUPPLY CHAIN</h1>
-</div>
-<p><strong style="color: #fd7e14 !important;padding: 10px;">
-  - Initially, products will be exported from the USA itself, where a fully-
-  fleged manufacturing plant and warehouses are set up. For Distribution, the company 
-  is going to use the distribution network of Dippin' Dots, its partner in South Korea.<br>
-  - Later on, after understanding the details of Korean market and gaining consumer 
-  base, the company will shift to 
-  South Korea and set up a plant there.<br>
-  - Clear study is being conducted on market trends and consumer preferences in South Korea. 
-  Since there is lesser initial idea on demand of product in South Korea, some extra 
-  inventory will be kept to meet some unexpected fluctuation in demand of products.<br>
-  - Inventory will also be kept in South Korea for continuing  distribution even in the 
-  face of disruptions or delays from USA.
-  </strong></p>
+  </div>
+  <div class="functionalheader" style="margin-top:4%">
+    <h1>DISTRIBUTION AND SUPPLY CHAIN</h1>
+  </div>
+  <p>
+    <strong style="color: #fd7e14 !important;padding: 10px;">
+      - Initially, products will be exported from the USA itself, where a fully- fleged manufacturing plant and warehouses are set up. For Distribution, the company is going to use the distribution network of Dippin' Dots, its partner in South Korea.<br />
+      - Later on, after understanding the details of Korean market and gaining consumer base, the company will shift to South Korea and set up a plant there.<br />
+      - Clear study is being conducted on market trends and consumer preferences in South Korea. Since there is lesser initial idea on demand of product in South Korea, some extra inventory will be kept to meet some unexpected fluctuation in demand of products.<br />
+      - Inventory will also be kept in South Korea for continuing distribution even in the face of disruptions or delays from USA.
+    </strong>
+  </p>
   <div class="functionalheader" style="margin-top:4%">
     <h1>TECHNICAL</h1>
   </div>
-  <p><strong style="color: #fd7e14 !important;padding: 10px;">
-    - The cutlery will be redesigned to align with Korean preferences. 
-    Engineering processes will be adapted 
-    to meet local regulations, standards, and market demands in South Korea. 
-    This may involve redesigning products or processes to align with local requirements.
-    <br>
-    - Innovations will be brought regularly and frequently when the company 
-    keeps learning from South Korea. The Korean tech practices will be adopted.<br>
-    - Even though thr immediate distribution will be done through export strategy, 
-    local suppliers and technology providers will be identified and relationships will 
-    be established with them.<br>
-    - Our technology already follows a negative plastic and negative carbon approach, which is 
-    the standard with technical requirements in South Korea.
-    </strong></p>
-<div class="functionalheader" style="margin-top:4%">
-  <h1>HUMAN RESOURCES</h1>
-</div>
-<p style="color: #fd7e14 !important;padding: 10px;">
-  When Incredible Eats goes global by moving to South Korea,
-   the company will adopt to a HYBRID ORGANIZATIONAL STRUCTURE, 
-  considering local, U.S., and even third-country nationals, while respecting 
-  cultural differences and legal compliance within a hybrid HR management structure.
+  <p>
+    <strong style="color: #fd7e14 !important;padding: 10px;">
+      - The cutlery will be redesigned to align with Korean preferences. Engineering processes will be adapted to meet local regulations, standards, and market demands in South Korea. This may involve redesigning products or processes to align with local requirements.
+      <br />
+      - Innovations will be brought regularly and frequently when the company keeps learning from South Korea. The Korean tech practices will be adopted.<br />
+      - Even though thr immediate distribution will be done through export strategy, local suppliers and technology providers will be identified and relationships will be established with them.<br />
+      - Our technology already follows a negative plastic and negative carbon approach, which is the standard with technical requirements in South Korea.
+    </strong>
   </p>
-      <div class="wrap">
-          <div
-              class="holder">
-              <!-- SALARY MONTHS -->
-              <div class="bar cf" data-percent="52%" data-show="12" style="background:#50C878">
-                  <span class="label">USA</span>
-              </div>
-              <div class="bar cf" data-percent="56%" data-show="13" style="background:#0B456A;margin-bottom: 10%;">
-                  <span class="label light">SKorea</span>
-              </div>
-              <!-- PAID MATERNITY LEAVE DAYS -->
-              <div class="bar cf" data-percent="0.1%" data-show="0" style="background:#50C878">
-                  <span class="label">USA</span>
-              </div>
-              <div class="bar cf" data-percent="90%" data-show="90" style="background:#0B456A;margin-bottom: 10%;">
-                  <span class="label light">SKorea</span>
-              </div>
-              <!--Weekly overtime hours-->
-              <div class="bar cf" data-percent="100%" data-show="&#8734;" style="background:#50C878">
-                  <span class="label">USA</span>
-              </div>
-              <div class="bar cf" data-percent="52%" data-show="52" style="background:#0B456A;margin-bottom: 10%;">
-                  <span class="label light">SKorea</span>
-              </div>
-              <!-- Maximum Probationary period -->
-              <div class="bar cf" data-percent="54%" data-show="12" style="background:#50C878">
-                  <span class="label light">USA</span>
-              </div>
-              <div class="bar cf" data-percent="13%" data-show="3" style="background:#0B456A;margin-bottom: 10%;">
-                  <span class="label">SK</span>
-              </div>
-              <!-- AVERAGE Notice period -->
-              <div class="bar cf" data-percent="30%" data-show="15" style="background:#50C878">
-                  <span class="label light">USA</span>
-              </div>
-              <div class="bar cf" data-percent="60%" data-show="30" style="background:#0B456A;margin-bottom: 10%;">
-                  <span class="label">SKorea</span>
-              </div>
-              <!-- Income tax -->
-              <div class="bar cf" data-percent="41.6%" data-show="20.8%" style="background:#50C878">
-                  <span class="label light">USA</span>
-              </div>
-              <div class="bar cf" data-percent="36.6%" data-show="18.3%" style="background:#0B456A;margin-bottom: 10%;">
-                  <span class="label">SKorea</span>
-              </div>
-          </div>
-          <div style="color:black !important; position: relative;
-                                                  z-index: 2;margin-top: -35%; margin-left:-30%; 
-                                                  font-size: small;">Salary months 
-                                                  <font style="font-size: smaller; color:black !important">&nbsp; &nbsp; &emsp; 
-                                                  Paid maternity leave days</font>
-              <font style="font-size: x-small; color:black !important">&emsp;
-                 Weekly Overtime Hours   &emsp;Maximum Probationary Days
-                                                              &nbsp; &emsp; Avg. Notice Period days</font>
-              &nbsp; &nbsp; &emsp; Income Tax
-
-          </div>
-
-          <div style="color:black !important; position: relative;
-                                                  z-index: 2; 
-                                                  font-size: small;">
-                             HR Policies in USA vs South Korea                   </div>
+  <div class="functionalheader" style="margin-top:4%">
+    <h1>HUMAN RESOURCES</h1>
+  </div>
+  <p style="color: #fd7e14 !important;padding: 10px;">When Incredible Eats goes global by moving to South Korea, the company will adopt to a HYBRID ORGANIZATIONAL STRUCTURE, considering local, U.S., and even third-country nationals, while respecting cultural differences and legal compliance within a hybrid HR management structure.</p>
+  <div class="wrap">
+    <div class="holder">
+      <!-- SALARY MONTHS -->
+      <div class="bar cf" data-percent="52%" data-show="12" style="background:#50C878">
+        <span class="label">USA</span>
       </div>
+      <div class="bar cf" data-percent="56%" data-show="13" style="background:#0B456A;margin-bottom: 10%;">
+        <span class="label light">SKorea</span>
+      </div>
+      <!-- PAID MATERNITY LEAVE DAYS -->
+      <div class="bar cf" data-percent="0.1%" data-show="0" style="background:#50C878">
+        <span class="label">USA</span>
+      </div>
+      <div class="bar cf" data-percent="90%" data-show="90" style="background:#0B456A;margin-bottom: 10%;">
+        <span class="label light">SKorea</span>
+      </div>
+      <!-- Weekly overtime hours -->
+      <div class="bar cf" data-percent="100%" data-show="&#8734;" style="background:#50C878">
+        <span class="label">USA</span>
+      </div>
+      <div class="bar cf" data-percent="52%" data-show="52" style="background:#0B456A;margin-bottom: 10%;">
+        <span class="label light">SKorea</span>
+      </div>
+      <!-- Maximum Probationary period -->
+      <div class="bar cf" data-percent="54%" data-show="12" style="background:#50C878">
+        <span class="label light">USA</span>
+      </div>
+      <div class="bar cf" data-percent="13%" data-show="3" style="background:#0B456A;margin-bottom: 10%;">
+        <span class="label">SK</span>
+      </div>
+      <!-- AVERAGE Notice period -->
+      <div class="bar cf" data-percent="30%" data-show="15" style="background:#50C878">
+        <span class="label light">USA</span>
+      </div>
+      <div class="bar cf" data-percent="60%" data-show="30" style="background:#0B456A;margin-bottom: 10%;">
+        <span class="label">SKorea</span>
+      </div>
+      <!-- Income tax -->
+      <div class="bar cf" data-percent="41.6%" data-show="20.8%" style="background:#50C878">
+        <span class="label light">USA</span>
+      </div>
+      <div class="bar cf" data-percent="36.6%" data-show="18.3%" style="background:#0B456A;margin-bottom: 10%;">
+        <span class="label">SKorea</span>
+      </div>
+    </div>
+    <div style="color:black !important; position: relative;
+                                                  z-index: 2;margin-top: -35%; margin-left:-30%; 
+                                                  font-size: small;">
+      Salary months<font style="font-size: smaller; color:black !important">&nbsp; &nbsp; &emsp; Paid maternity leave days</font>
+      <font style="font-size: x-small; color:black !important">&emsp;
+        Weekly Overtime Hours &emsp;Maximum Probationary Days &nbsp; &emsp; Avg. Notice Period days</font>&nbsp; &nbsp; &emsp; Income Tax
+    </div>
 
-      <ol class="ols" style="margin-top:-8% !important; grid-template-columns: 1fr 1fr !important">
-        <li class="sk" style="--accent-color: #ffc107">
-          <div class="icon">
-            <img src="{% static 'flagsk.png' %}" style="height: 100%;width: 1.5em;"></img>
-          </div>
-          <div class="descr" style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr;">
-            <div style="color: #ffc107 !important;">- ORGANIZATIONAL COMMUNICATION:<br>
-            Formal, top-down communication, with superiors giving general 
-            directives and subordinates interpreting them, leads to misunderstandings and 
-            hinders open expression of opposing views in formal meetings.</div>
-            <div style="color: #ffc107 !important;">- ORGANIZATIONAL STRUCTURE:<br>
-              Companies in South Korea have tall hierarchical structure with decision-making authority
-               concentrated at senior management levels and horizontal functional control 
-               in staff departments.</div>
-            <div style="color: #ffc107 !important;">- LEADERSHIP:<br>
-            Leadership style is directive and authoritarian influenced by 
-            family and clan systems.</div>
-            <div style="color: #ffc107 !important;">
-              -RECRUITING:<br>
-              Managers are often recruited from elite backgrounds and form power groups through 
-              geographic and school connections. Friends from hometowns or 
-              universities are given preference while hiring.
-            </div>
-            <div style="color: #ffc107 !important;">
-              -PERFORMANCE APPRAISAL:<br>
-              Appraisals are based on seniority and performance. Wages are usually decided by 
-              seniority level and bonese are judged by performance.
-            </div>
-          </div>
-        </li>
-        <li class="usa" style="--accent-color: #008DC2">
-          <div class="icon">
-            <img src="{% static 'flagusa.png' %}" style="height: 100%;width: 1.5em;"></img>
-          </div>
-          <div class="descr" style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr;">
-            <div style="color:#008DC2 !important">- ORGANIZATIONAL COMMUNICATION:<br>
-            American companies combine formal and informal communication 
-            and use different network structures based on organizational strategy and structure.</div>
-            <div style="color:#008DC2 !important">- ORGANIZATIONAL STRUCTURE:<br>
-            Companies in USA have various organizational styles based on
-             company size, technology and environmental certainity.<br><br></div>
-            <div style="color:#008DC2 !important">
-              -LEADERSHIP:<br>
-              Leadership style in USA is more diverse and participative with 
-              minimal political connections.
-            </div>
-            <div style="color:#008DC2 !important">
-              -RECRUITING:<br>
-              U.S. laws and regulations 
-              governing recruitment and hiring mandate decisions free from discrimination 
-              based on race, sex, religion, age, or disability. 
-            </div>
-            <div style="color:#008DC2 !important">
-            -PERFORMANCE APPRAISAL:<br>
-            USA believes that the strong will survive and the weak will perish. Rewards and promotions 
-            are based on individual's success or failures, not a group.
-            </div>
+    <div style="color:black !important; position: relative;
+                                                  z-index: 2; 
+                                                  font-size: small;">HR Policies in USA vs South Korea</div>
+  </div>
 
-
-
-
-
-          </div>
-        </li>
-
-        
-      </ol>
-      <p style="color: #fd7e14 !important;padding: 10px;">
-        Korean management strategies are adopted from Japnese management 
-        policies but is now moving towards direct American HRM techniques.
-       Even though South Korea has a very different culture than USA,
-       since Koreans are exposed to globalization or overseas culture traits, they 
-       find it easy to work in a diverse culture.
-       <br>
-       The Hybrid HR approach chosen by Incredible Eats combines
-        elements from both countries to create a harmonious and effective HR strategy.<br>
-        <strong style="color: #fd7e14 !important">
-          After Hiring some South Korean candidates,<br>
-          TRAINING: Cultural sensitivity training will be provided to all employees, 
-          from both countries, 
-          to develop understanding and respect for each other's work styles.<br>
-          COMMUNICATION: South Korean employees will be encouraged to give their views 
-          and participate in discussions without hesitation.<br>
-          LEGAL:  New HR policies and practices will comply with the labor laws and 
-          regulations of both South Korea and the USA.<br>
-          WAGES: It will be made sure that the wages for workers immigrating from South 
-          Korea to USA in the first phase of company shift export policy are provided wages 
-          that comply with South Korean standards.<br>
-          ADDITIONAL BENEFITS: Appraisals, bonuses and vacations, etc. will be 
-          provided for motivation of employees.
-        </strong>
+  <ol class="ols" style="margin-top:-8% !important; grid-template-columns: 1fr 1fr !important">
+    <li class="sk" style="--accent-color: #ffc107">
+      <div class="icon">
+        <img src="{% static 'flagsk.png' %}" style="height: 100%;width: 1.5em;" />
+      </div>
+      <div class="descr" style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr;">
+        <div style="color: #ffc107 !important;">
+          - ORGANIZATIONAL COMMUNICATION:<br />
+          Formal, top-down communication, with superiors giving general directives and subordinates interpreting them, leads to misunderstandings and hinders open expression of opposing views in formal meetings.
+        </div>
+        <div style="color: #ffc107 !important;">
+          - ORGANIZATIONAL STRUCTURE:<br />
+          Companies in South Korea have tall hierarchical structure with decision-making authority concentrated at senior management levels and horizontal functional control in staff departments.
+        </div>
+        <div style="color: #ffc107 !important;">
+          - LEADERSHIP:<br />
+          Leadership style is directive and authoritarian influenced by family and clan systems.
+        </div>
+        <div style="color: #ffc107 !important;">
+          -RECRUITING:<br />
+          Managers are often recruited from elite backgrounds and form power groups through geographic and school connections. Friends from hometowns or universities are given preference while hiring.
+        </div>
+        <div style="color: #ffc107 !important;">
+          -PERFORMANCE APPRAISAL:<br />
+          Appraisals are based on seniority and performance. Wages are usually decided by seniority level and bonese are judged by performance.
+        </div>
+      </div>
+    </li>
+    <li class="usa" style="--accent-color: #008DC2">
+      <div class="icon">
+        <img src="{% static 'flagusa.png' %}" style="height: 100%;width: 1.5em;" />
+      </div>
+      <div class="descr" style="display: grid; grid-template-rows: 1fr 1fr 1fr 1fr 1fr;">
+        <div style="color:#008DC2 !important">
+          - ORGANIZATIONAL COMMUNICATION:<br />
+          American companies combine formal and informal communication and use different network structures based on organizational strategy and structure.
+        </div>
+        <div style="color:#008DC2 !important">
+          - ORGANIZATIONAL STRUCTURE:<br />
+          Companies in USA have various organizational styles based on company size, technology and environmental certainity.<br /><br />
+        </div>
+        <div style="color:#008DC2 !important">
+          -LEADERSHIP:<br />
+          Leadership style in USA is more diverse and participative with minimal political connections.
+        </div>
+        <div style="color:#008DC2 !important">
+          -RECRUITING:<br />
+          U.S. laws and regulations governing recruitment and hiring mandate decisions free from discrimination based on race, sex, religion, age, or disability.
+        </div>
+        <div style="color:#008DC2 !important">
+          -PERFORMANCE APPRAISAL:<br />
+          USA believes that the strong will survive and the weak will perish. Rewards and promotions are based on individual's success or failures, not a group.
+        </div>
+      </div>
+    </li>
+  </ol>
+  <p style="color: #fd7e14 !important;padding: 10px;">
+    Korean management strategies are adopted from Japnese management policies but is now moving towards direct American HRM techniques. Even though South Korea has a very different culture than USA, since Koreans are exposed to globalization or overseas culture traits, they find it easy to work in a diverse culture.
+    <br />
+    The Hybrid HR approach chosen by Incredible Eats combines elements from both countries to create a harmonious and effective HR strategy.<br />
+    <strong style="color: #fd7e14 !important">
+      After Hiring some South Korean candidates,<br />
+      TRAINING: Cultural sensitivity training will be provided to all employees, from both countries, to develop understanding and respect for each other's work styles.<br />
+      COMMUNICATION: South Korean employees will be encouraged to give their views and participate in discussions without hesitation.<br />
+      LEGAL: New HR policies and practices will comply with the labor laws and regulations of both South Korea and the USA.<br />
+      WAGES: It will be made sure that the wages for workers immigrating from South Korea to USA in the first phase of company shift export policy are provided wages that comply with South Korean standards.<br />
+      ADDITIONAL BENEFITS: Appraisals, bonuses and vacations, etc. will be provided for motivation of employees.
+    </strong>
   </p>
 
   <div class="functionalheader" style="margin-top:4%">
     <h1>FINANCE</h1>
   </div>
-  <p><strong style="color: #fd7e14 !important;padding: 10px;">
-    - Incredible Eats' net worth has had some fluctutaions with today being $2
-     Million but it has not faced loss at any stage.
-    <br>
-    - The company raised an investment of $200k from Big Idea Ventures in a
-     seed round, and then got a deal from Lori Greiner with $50k at 15% equity in Shark Tank.
-<br>
-    - The United States and South Korea signed 
-    the United States-Korea Free Trade Agreement (KORUS FTA) in 2007.
-     So, it's very easy for us to sell our products in Korean market.<br>
-    - When the company starts its business in South Korea, the financial statements and 
-    documentation will be created in 
-    accordance with International and South Korean accounting standards (K-IFRS). 
-    The GAAP statements will be changed into IFRS standards.<br>
-    - One South Korean won is equal to 0.00074 USD, which will provide us a cost advantage.<br>
-    - The company has a patent for current design and technology and once the plant has been set up in Korea, 
-    the design and technology update from there will also be patented.<br>
-    - Insurance and salary policies will be customised when the company moves to South Korea.
-    </strong></p>
+  <p>
+    <strong style="color: #fd7e14 !important;padding: 10px;">
+      - Incredible Eats' net worth has had some fluctutaions with today being $2 Million but it has not faced loss at any stage.
+      <br />
+      - The company raised an investment of $200k from Big Idea Ventures in a seed round, and then got a deal from Lori Greiner with $50k at 15% equity in Shark Tank.
+      <br />
+      - The United States and South Korea signed the United States-Korea Free Trade Agreement (KORUS FTA) in 2007. So, it's very easy for us to sell our products in Korean market.<br />
+      - When the company starts its business in South Korea, the financial statements and documentation will be created in accordance with International and South Korean accounting standards (K-IFRS). The GAAP statements will be changed into IFRS standards.<br />
+      - One South Korean won is equal to 0.00074 USD, which will provide us a cost advantage.<br />
+      - The company has a patent for current design and technology and once the plant has been set up in Korea, the design and technology update from there will also be patented.<br />
+      - Insurance and salary policies will be customised when the company moves to South Korea.
+    </strong>
+  </p>
 
-    <div class="functionalheader" style="margin-top:4%">
-      <h1>GOVERNANCE - SOCIAL, COMMUNITY, AND ENVIRONMENTAL</h1>
-    </div>
-    <p><strong style="color: #fd7e14 !important;padding: 10px;">
-      - Incredible Eats is in advantage because all our products meet the 
-      sustainability and environmental expectations of the Korean market. 
-      We promote eco-friendly and carbon-negative practices in all stages of our operations.
-      <br>
+  <div class="functionalheader" style="margin-top:4%">
+    <h1>GOVERNANCE - SOCIAL, COMMUNITY, AND ENVIRONMENTAL</h1>
+  </div>
+  <p>
+    <strong style="color: #fd7e14 !important;padding: 10px;">
+      - Incredible Eats is in advantage because all our products meet the sustainability and environmental expectations of the Korean market. We promote eco-friendly and carbon-negative practices in all stages of our operations.
+      <br />
       - The new employees (from both countries) will be trained to make sure they understand and uplift the governance and responsibility initiatives.
-  <br>
-      - Incredible Eats will organize and participate in the events of government related to plastic-ban and saving environment. We will provide the public with regular reports on social, community, and environmental performance to 
-      demonstrate our commitment to responsible business practices.<br>
-      - We will appoint board members who are bilinguil and understand Korean business and regulatory environment to 
-      ensure transparency, accountability, and integrity of our business.<br>
+      <br />
+      - Incredible Eats will organize and participate in the events of government related to plastic-ban and saving environment. We will provide the public with regular reports on social, community, and environmental performance to demonstrate our commitment to responsible business practices.<br />
+      - We will appoint board members who are bilinguil and understand Korean business and regulatory environment to ensure transparency, accountability, and integrity of our business.<br />
       - The HR policies are being customized to the region too.
-      </strong></p>
+    </strong>
+  </p>
 
-<script>
-  $(document).ready(function () {
+  <script>
+    $(document).ready(function () {
       function startAnimationIfVisible() {
-          $('.bar').each(function (i) {
-              var $bar = $(this);
-              if (isElementInViewport($bar[0]) && ! $bar.data('animation-started')) {
-                  $bar.data('animation-started', true);
-                  $bar.append('<span class="count">0%</span>');
-                  setTimeout(function () {
-                      $bar.css('width', $bar.attr('data-percent'));
-                  }, i * 100);
+        $('.bar').each(function (i) {
+          var $bar = $(this)
+          if (isElementInViewport($bar[0]) && !$bar.data('animation-started')) {
+            $bar.data('animation-started', true)
+            $bar.append('<span class="count">0%</span>')
+            setTimeout(function () {
+              $bar.css('width', $bar.attr('data-percent'))
+            }, i * 100)
+          }
+        })
+    
+        $('.count').each(function () {
+          var $count = $(this)
+          var $bar = $count.closest('.bar')
+          if (isElementInViewport($bar[0]) && !$bar.data('count-animation-started')) {
+            $bar.data('count-animation-started', true)
+            $count.prop('Counter', 0).animate(
+              {
+                Counter: $bar.attr('data-percent')
+              },
+              {
+                duration: 500,
+                easing: 'swing',
+                step: function (now) {
+                  $count.text($bar.attr('data-show'))
+                }
               }
-          });
-
-          $('.count').each(function () {
-              var $count = $(this);
-              var $bar = $count.closest('.bar');
-              if (isElementInViewport($bar[0]) && ! $bar.data('count-animation-started')) {
-                  $bar.data('count-animation-started', true);
-                  $count.prop('Counter', 0).animate({
-                      Counter: $bar.attr('data-percent')
-                  }, {
-                      duration: 500,
-                      easing: 'swing',
-                      step: function (now) {
-                          $count.text( $bar.attr('data-show'));
-                      }
-                  });
-              }
-          });
+            )
+          }
+        })
       }
-
+    
       function isElementInViewport(el) {
-          var rect = el.getBoundingClientRect();
-          return(rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth));
+        var rect = el.getBoundingClientRect()
+        return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth)
       }
-
-      startAnimationIfVisible();
-      $(window).on('scroll', startAnimationIfVisible);
-  });
-
-</script>
+    
+      startAnimationIfVisible()
+      $(window).on('scroll', startAnimationIfVisible)
+    })
+  </script>
 {% endblock %}
