@@ -14,3 +14,6 @@ def competitive_view(request):
 
 def entry_view(request):
     return render(request, 'entry.html')
+
+def citations_view(request):
+    return render(request, 'citations.html')

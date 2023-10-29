@@ -111,16 +111,22 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'index' %}nav-link-active{% endif %}" href="{% url 'index' %}">About</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'pestle_view' %}nav-link-active{% endif %}" href="{% url 'pestle_view' %}">PESTLE Analysis</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'hofsted_view' %}nav-link-active{% endif %}" href="{% url 'hofsted_view' %}">Hofsted</a>
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'hofsted_view' %}nav-link-active{% endif %}" href="{% url 'hofsted_view' %}">Hofsted's Cultural Dimensions</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'competitive_view' %}nav-link-active{% endif %}" href="{% url 'competitive_view' %}">Competitiveness</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'entry_view' %}nav-link-active{% endif %}" href="{% url 'entry_view' %}">Entry Strategy Structure</a>
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'entry_view' %}nav-link-active{% endif %}" href="{% url 'entry_view' %}">Entering the global market</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path == request.resolver_match.url_name and request.resolver_match.url_name == 'citations' %}nav-link-active{% endif %}" href="{% url 'citations' %}">Citations</a>
               </li>
             </ul>
           </div>
@@ -167,11 +173,15 @@
     <ul id="bottomul" style=" list-style-type: none">
       <li class="li"><a href="{% url 'index' %}">About</a></li>
       <li class="li"><a href="{% url 'pestle_view' %}">PESTLE Analysis</a></li>
-      <li class="li"><a href="{% url 'hofsted_view' %}">Hofsted Analysis</a></li>
+      <li class="li"><a href="{% url 'hofsted_view' %}">Hofsted's Cultural Dimensions</a></li>
       <li class="li"><a href="{% url 'competitive_view' %}">Competitiveness Analysis</a></li>
-      <li class="li"><a href="{% url 'entry_view' %}">Entry Strategy Structure</a></li>
-      <li class="li">About</li>
+      <li class="li"><a href="{% url 'entry_view' %}">Entering the Global market</a></li>
+      <li class="li"><a href="{% url 'citations' %}">Citations</a></li>
+      <li class="li"><p></p><p></p><p></p></li>
+      <li class="li">Created by: Gurleen Kaur</li>
+      <li class="li">Inspired by: <a href="https://incredibleeats.com/" target="_blank">incredibleeats.com</a></li>
     </ul>
+
   </div>
 </div>
     </div>

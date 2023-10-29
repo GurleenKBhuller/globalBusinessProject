@@ -384,8 +384,28 @@ ul {
   overflow-y: hidden;
 }
 </style>
+<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
 
-<div class="ag-format-container" style="display: grid; grid-template-columns: 1fr 0.25fr 2fr; margin-top:5%">
+  <ul class="nav nav-pills" style="margin-top: 5%;">
+    <li class="nav-item">
+    <a class="nav-link" style="color:#0d6efd !important" href="#">Entering the global market&nbsp;&nbsp;&gt; </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:#0d6efd !important" href="#content1">Strategy for Entry</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:#0d6efd !important" href="#content2">Structure for Entry</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color:#0d6efd !important" href="#content3">Functional Details</a>
+    </li>
+  </ul>
+  </nav>
+<p id="content1">
+  <strong style="color:#fa8321 !important; font-size:xx-large; ">STRATEGY FOR ENTRY</strong>
+</p>
+<div class="ag-format-container" style="display: grid; grid-template-columns: 1fr 0.25fr 2fr; 
+margin-top:1%">
     <div class="ag-courses_box">
       <div class="ag-courses_item">
         <a href="#" class="ag-courses-item_link">
@@ -417,6 +437,10 @@ ul {
       </div>
     </div>
   </div>
+
+  <p id="content2">
+    <strong style="color:#fa8321 !important; font-size:xx-large; ">STRUCTURE FOR ENTRY</strong>
+  </p>
 
   <div class="ag-format-container" style="display: grid; grid-template-columns: 2fr 0.25fr 1fr;">
     <div class="ag-courses_box">
@@ -451,7 +475,9 @@ ul {
   </div>
 
   <!-- FUNCTIONAL -->
-
+  <p id="content3">
+    <strong style="color:#fa8321 !important; font-size:xx-large; ">FUNCTIONAL CONSIDERATIONS FOR ENTRY</strong>
+  </p>
   <div class="functionalheader">
     <h1>MARKETING</h1>
   </div>
@@ -464,7 +490,7 @@ ul {
     <ol>
       <li style="--accent-color: #50C878">
         <div class="icon">
-          <img src="{% static 'product.png' %}" style="height: 100%;width: 1.5em;"></img>
+          <img src="{% static 'product.png' %}" style="height: 100%;width: 1.5em;"/>
         </div>
         <div class="descr">
           - The core product, edible cutlery will remain same.<br>
@@ -725,6 +751,46 @@ ul {
         </strong>
   </p>
 
+  <div class="functionalheader" style="margin-top:4%">
+    <h1>FINANCE</h1>
+  </div>
+  <p><strong style="color: #fd7e14 !important;padding: 10px;">
+    - Incredible Eats' net worth has had some fluctutaions with today being $2
+     Million but it has not faced loss at any stage.
+    <br>
+    - The company raised an investment of $200k from Big Idea Ventures in a
+     seed round, and then got a deal from Lori Greiner with $50k at 15% equity in Shark Tank.
+<br>
+    - The United States and South Korea signed 
+    the United States-Korea Free Trade Agreement (KORUS FTA) in 2007.
+     So, it's very easy for us to sell our products in Korean market.<br>
+    - When the company starts its business in South Korea, the financial statements and 
+    documentation will be created in 
+    accordance with International and South Korean accounting standards (K-IFRS). 
+    The GAAP statements will be changed into IFRS standards.<br>
+    - One South Korean won is equal to 0.00074 USD, which will provide us a cost advantage.<br>
+    - The company has a patent for current design and technology and once the plant has been set up in Korea, 
+    the design and technology update from there will also be patented.<br>
+    - Insurance and salary policies will be customised when the company moves to South Korea.
+    </strong></p>
+
+    <div class="functionalheader" style="margin-top:4%">
+      <h1>GOVERNANCE - SOCIAL, COMMUNITY, AND ENVIRONMENTAL</h1>
+    </div>
+    <p><strong style="color: #fd7e14 !important;padding: 10px;">
+      - Incredible Eats is in advantage because all our products meet the 
+      sustainability and environmental expectations of the Korean market. 
+      We promote eco-friendly and carbon-negative practices in all stages of our operations.
+      <br>
+      - The new employees (from both countries) will be trained to make sure they understand and uplift the governance and responsibility initiatives.
+  <br>
+      - Incredible Eats will organize and participate in the events of government related to plastic-ban and saving environment. We will provide the public with regular reports on social, community, and environmental performance to 
+      demonstrate our commitment to responsible business practices.<br>
+      - We will appoint board members who are bilinguil and understand Korean business and regulatory environment to 
+      ensure transparency, accountability, and integrity of our business.<br>
+      - The HR policies are being customized to the region too.
+      </strong></p>
+
 <script>
   $(document).ready(function () {
       function startAnimationIfVisible() {
@@ -765,5 +831,6 @@ ul {
       startAnimationIfVisible();
       $(window).on('scroll', startAnimationIfVisible);
   });
+
 </script>
 {% endblock %}
